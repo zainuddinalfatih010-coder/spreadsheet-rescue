@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F7F3EA">
+<title>Spreadsheet Rescue — Data X-Ray & Safe Cleanup</title>
+
+
+<meta name="description" content="Scan CSV/XLSX locally, inspect data health, preview deterministic safe fixes, create clean copies, and generate a rescue scope report.">
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Spreadsheet Rescue — Data X-Ray & Safe Cleanup">
+<meta property="og:description" content="Free local spreadsheet diagnostic: health scan, safe cleanup preview, scope estimate, and client-ready report.">
+<meta name="twitter:card" content="summary">
+<link rel="manifest" href="site.webmanifest">
+<link rel="stylesheet" href="assets/styles.css?v=10.0.0">
+</head>
+<body>
+<noscript><div style="padding:16px;font:700 14px system-ui;background:#FFE0DC;color:#101828">Spreadsheet Rescue membutuhkan JavaScript untuk Data X-Ray dan safe-clean tools.</div></noscript>
+<div class="page">
+<a class="skip" href="#main">Lewati ke konten</a>
+
+<header class="topbar">
+  <a class="logo" href="#top" aria-label="Spreadsheet Rescue">
+    <span class="logo-mark">SR</span><span>Spreadsheet Rescue</span>
+  </a>
+  <nav class="nav" aria-label="Navigasi utama">
+    <a href="#xray">X-Ray</a><a href="#quote">Quote</a><a href="#intake">Intake</a><a href="#history">History</a><a href="#demo">Demo</a><a href="#proof">Proof</a><a href="#pricing">Pricing</a>
+  </nav>
+  <a class="top-cta" href="#start">KIRIM SAMPLE ↗</a>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker reveal"><i></i> Pilot projects open</div>
+      <h1 class="reveal">Spreadsheet kacau?<br><span class="pop">RESCUE IT.</span></h1>
+      <p class="reveal">CSV/XLSX berantakan aku ubah jadi master data yang bersih, tervalidasi, dan bisa ditelusuri. Yang ambigu nggak ditebak. Yang salah nggak disembunyikan.</p>
+      <div class="hero-actions reveal">
+        <a class="btn primary" href="#demo">LIHAT DATA BERUBAH ↓</a>
+        <a class="btn secondary" href="spreadsheet_rescue_demo_v2.xlsx" download>DOWNLOAD WORKBOOK</a>
+      </div>
+      <div class="hero-mini-proof reveal">
+        <div class="mini-chip"><b>458</b> raw rows</div>
+        <div class="mini-chip"><b>332</b> clean</div>
+        <div class="mini-chip"><b>116</b> blocked</div>
+        <div class="mini-chip"><b>PASS</b> reconciliation</div>
+      </div>
+    </div>
+
+    <div class="machine reveal" data-machine>
+      <div class="machine-head">
+        <div class="machine-title"><small>Live rescue machine</small><strong>orders_august.csv</strong></div>
+        <button class="run-btn" type="button" data-run>RUN RESCUE</button>
+      </div>
+      <div class="machine-screen">
+        <div class="sheet-bar"><span>RAW INPUT</span><span class="status-dot" data-machine-status>waiting</span></div>
+        <div class="rows">
+          <div class="data-row"><span>12/08/26</span><span>kopi&nbsp;&nbsp;PAGI</span><span>Rp28.000</span><span class="flag">raw</span></div>
+          <div class="data-row"><span>Aug 12</span><span>MI GURIH AYAM</span><span>3,500</span><span class="flag">raw</span></div>
+          <div class="data-row bad"><span>31/02/26</span><span>Wafer Gembira</span><span>Rp??</span><span class="flag">review</span></div>
+          <div class="data-row warn"><span>14/08/26</span><span>Mi Gurih</span><span>3,800</span><span class="flag">ambig.</span></div>
+        </div>
+      </div>
+      <div class="progress"><i></i></div>
+      <div class="machine-result">
+        <div class="result-box"><b data-r-clean>—</b><span>clean</span></div>
+        <div class="result-box"><b data-r-review>—</b><span>review</span></div>
+        <div class="result-box"><b data-r-pass>READY</b><span>reconcile</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-shell" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-group"><span>MERGE</span><span>NORMALIZE</span><span>VALIDATE</span><span>DEDUPE</span><span>RECONCILE</span><span>TRACE</span></div>
+    <div class="marquee-group"><span>MERGE</span><span>NORMALIZE</span><span>VALIDATE</span><span>DEDUPE</span><span>RECONCILE</span><span>TRACE</span></div>
+  </div>
+</div>
+
+<section class="section white">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><div class="kicker">WHAT I FIX</div><h2>Boring problems.<br>Expensive mistakes.</h2></div>
+      <p>Scope-nya sengaja fokus. Bukan “semua urusan IT”, tapi masalah spreadsheet yang hasilnya bisa diuji dan dipertanggungjawabkan.</p>
+    </div>
+    <div class="fix-list">
+      <article class="fix-row reveal"><div class="fix-no">01</div><div class="fix-copy"><h3>File numpuk → satu master data</h3><p>Gabungkan beberapa CSV/XLSX, samakan schema, rapikan format, dan pertahankan asal setiap baris.</p></div><div class="fix-tag">MERGE</div></article>
+      <article class="fix-row reveal"><div class="fix-no">02</div><div class="fix-copy"><h3>Format campur → canonical</h3><p>Tanggal, currency, casing, whitespace, alias produk, dan field repetitif dibuat konsisten bila mapping-nya aman.</p></div><div class="fix-tag">NORMALIZE</div></article>
+      <article class="fix-row reveal"><div class="fix-no">03</div><div class="fix-copy"><h3>Data meragukan → review rail</h3><p>Invalid date, nilai rusak, SKU asing, atau mapping ambigu dipisahkan. Nggak ada silent guessing.</p></div><div class="fix-tag">VALIDATE</div></article>
+      <article class="fix-row reveal"><div class="fix-no">04</div><div class="fix-copy"><h3>Duplicate → keputusan aman</h3><p>Exact duplicate bisa dibuang. Suspected duplicate tetap hidup dan diberi tanda supaya manusia yang memutuskan.</p></div><div class="fix-tag">DEDUPE</div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section xray-section" id="xray" aria-labelledby="xray-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">V6 LAB / DATA X-RAY</div>
+        <h2 id="xray-title">Drop CSV / XLSX.<br>Lihat sakitnya.</h2>
+        <div class="xray-privacy">100% local — file tidak meninggalkan browser</div>
+      </div>
+      <p>Free diagnostic mini-tool. Scan CSV atau workbook XLSX multi-sheet: struktur, missing values, duplicate rows, tanggal, whitespace/casing, dan suspicious totals sebelum memutuskan perlu rescue penuh atau tidak.</p>
+    </div>
+
+    <div class="xray-shell reveal" data-xray>
+      <div class="xray-top">
+        <div class="xray-drop-wrap">
+          <div class="xray-drop" data-dropzone tabindex="0" role="button" aria-label="Pilih atau drop file CSV untuk dianalisis">
+            <div class="xray-icon" aria-hidden="true">⌁</div>
+            <h3>Drop your messy CSV / XLSX.</h3>
+            <p>Diproses langsung di device kamu. Tidak ada upload, API, account, atau server.</p>
+            <div class="xray-drop-actions">
+              <button type="button" class="btn primary" data-browse>PILIH FILE</button>
+              <button type="button" class="btn secondary" data-sample>PAKAI SAMPLE KACAU</button>
+            </div>
+            <div class="xray-file-note">CSV / XLSX • max 8 MB • scan sampai 20.000 rows per sheet</div>
+            <input class="xray-input" type="file" accept=".csv,.xlsx,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data-file-input>
+            <div class="xray-error" data-xray-error role="alert" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="xray-health">
+          <div class="xray-health-head">
+            <div>
+              <small>DATA HEALTH</small>
+              <strong data-xray-name>Belum ada file</strong>
+            </div>
+            <div class="health-score" data-health-score style="--score:0">
+              <span><b data-health-number>--</b><small>/100</small></span>
+            </div>
+          </div>
+
+          <div class="health-bars" aria-label="Data health dimensions">
+            <div class="health-bar"><span>Structure</span><div class="health-track"><i data-health-bar="structure"></i></div><b data-health-value="structure">--</b></div>
+            <div class="health-bar"><span>Complete</span><div class="health-track"><i data-health-bar="completeness"></i></div><b data-health-value="completeness">--</b></div>
+            <div class="health-bar"><span>Consistent</span><div class="health-track"><i data-health-bar="consistency"></i></div><b data-health-value="consistency">--</b></div>
+            <div class="health-bar"><span>Duplicates</span><div class="health-track"><i data-health-bar="duplicates"></i></div><b data-health-value="duplicates">--</b></div>
+            <div class="health-bar"><span>Validity</span><div class="health-track"><i data-health-bar="validity"></i></div><b data-health-value="validity">--</b></div>
+          </div>
+
+          <div class="xray-meta">
+            <div><b data-meta-rows>—</b><span>rows</span></div>
+            <div><b data-meta-cols>—</b><span>max columns</span></div>
+            <div><b data-meta-sheets>—</b><span>sheets</span></div>
+            <div><b data-meta-delim>—</b><span>format</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="xray-results" data-xray-results>
+        <div class="xray-result-grid">
+          <div class="xray-issues">
+            <h3>What the scan found</h3>
+            <div class="issue-list" data-issue-list></div>
+          </div>
+          <div class="xray-preview">
+            <h3>Safe-fix preview</h3>
+            <div class="preview-table" data-preview-table>
+              <div class="preview-empty">Scan file dulu untuk melihat contoh perubahan yang aman.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rescue-controls" data-rescue-controls hidden>
+          <div class="rescue-controls-head">
+            <h3>Choose safe fixes</h3>
+            <p>Hanya rule deterministic yang bisa dinyalakan. Item review-only tetap dipertahankan supaya nggak ada data yang hilang atau ditebak.</p>
+          </div>
+
+          <div class="rule-grid">
+            <div class="rule-card">
+              <input type="checkbox" id="rule-trim" data-rule="trim" checked>
+              <label for="rule-trim">
+                <span class="rule-check"></span>
+                <span class="rule-copy"><strong>Trim whitespace</strong><span>Hapus spasi awal/akhir dan rapikan spasi berulang.</span></span>
+                <span class="rule-count" data-rule-count="trim">0</span>
+              </label>
+            </div>
+
+            <div class="rule-card">
+              <input type="checkbox" id="rule-date" data-rule="date" checked>
+              <label for="rule-date">
+                <span class="rule-check"></span>
+                <span class="rule-copy"><strong>Normalize dates</strong><span>Tanggal yang jelas dan valid → format ISO YYYY-MM-DD.</span></span>
+                <span class="rule-count" data-rule-count="date">0</span>
+              </label>
+            </div>
+
+            <div class="rule-card">
+              <input type="checkbox" id="rule-money" data-rule="money" checked>
+              <label for="rule-money">
+                <span class="rule-check"></span>
+                <span class="rule-copy"><strong>Normalize currency</strong><span>Field harga/amount yang jelas → numeric value.</span></span>
+                <span class="rule-count" data-rule-count="money">0</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="review-only">
+            <div class="review-chip"><span>Duplicate rows — review only</span><b data-review-count="duplicates">0</b></div>
+            <div class="review-chip"><span>Invalid dates — review only</span><b data-review-count="invalidDates">0</b></div>
+            <div class="review-chip"><span>Suspicious totals — review only</span><b data-review-count="suspiciousTotals">0</b></div>
+          </div>
+
+          <div class="rule-summary" data-rule-summary>
+            Selected safe fixes: <b>0</b> candidate(s).
+          </div>
+        </div>
+
+
+        <div class="quote-engine" data-quote-engine hidden id="quote">
+          <div class="quote-head">
+            <div>
+              <h3>Instant scope estimate</h3>
+              <p>Dihitung dari ukuran file, jumlah sheet, issue density, dan review load. Ini estimasi pilot untuk one-time rescue — bukan invoice final.</p>
+            </div>
+            <div class="quote-badge">
+              <small>complexity</small>
+              <b data-quote-level>—</b>
+            </div>
+          </div>
+
+          <div class="quote-main">
+            <div class="quote-card">
+              <div class="quote-package-label">Recommended service</div>
+              <div class="quote-package" data-quote-package>—</div>
+
+              <div class="quote-range">
+                <b data-quote-range>—</b>
+                <span>estimated starting range</span>
+              </div>
+
+              <div class="quote-meter">
+                <div class="quote-meter-top"><span>scope load</span><b data-quote-score>0 / 12</b></div>
+                <div class="quote-meter-track"><i data-quote-meter></i></div>
+              </div>
+
+              <div class="quote-recurring">
+                <span>Masalah ini terjadi berulang tiap minggu/bulan?</span>
+                <b>Automation → quote separately</b>
+              </div>
+            </div>
+
+            <div class="quote-card">
+              <div class="quote-package-label">Why this estimate</div>
+              <div class="quote-reasons">
+                <div class="quote-reason"><small>Data volume</small><strong data-quote-volume>—</strong></div>
+                <div class="quote-reason"><small>Workbook shape</small><strong data-quote-shape>—</strong></div>
+                <div class="quote-reason"><small>Issue density</small><strong data-quote-density>—</strong></div>
+                <div class="quote-reason"><small>Human review</small><strong data-quote-review>—</strong></div>
+              </div>
+              <div class="quote-foot" data-quote-foot>
+                Final scope tetap dicek manual sebelum deal.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="xray-actions">
+          <p>Diagnostic ini tidak menulis ulang file asli. Preview hanya menunjukkan transformasi yang cukup aman untuk disarankan otomatis; sisanya harus human-review.</p>
+          <div class="xray-actions-group">
+            <button class="btn secondary" type="button" data-download-report disabled>DOWNLOAD SCAN REPORT</button>
+            <button class="btn primary" type="button" data-safe-clean disabled>CREATE SAFE CLEAN COPY</button>
+            <a class="btn secondary" href="#start">NEED FULL RESCUE? →</a>
+          </div>
+        </div>
+        <div class="xray-clean-status" data-clean-status hidden aria-live="polite"></div>
+
+        <div class="handoff-branding" data-handoff-branding>
+          <div class="handoff-branding-head">
+            <h3>Brand the handoff</h3>
+            <p>Optional. Label client/project sebelum report dibuat. Hanya summary scan + label ini yang masuk ke share link — bukan isi file mentah.</p>
+          </div>
+          <div class="brand-grid">
+            <label class="brand-field"><span>Prepared for / client</span><input type="text" maxlength="80" placeholder="e.g. Toko Maju Jaya" data-brand-client></label>
+            <label class="brand-field"><span>Project label</span><input type="text" maxlength="80" placeholder="e.g. August Orders Cleanup" data-brand-project></label>
+            <label class="brand-field"><span>Prepared by</span><input type="text" maxlength="80" placeholder="Spreadsheet Rescue" value="Spreadsheet Rescue" data-brand-by></label>
+          </div>
+          <div class="brand-note">Share link memakai URL fragment (#). Setelah web di-host, server tidak menerima payload fragment tersebut; orang yang punya link tetap bisa membaca summary report, jadi jangan masukkan rahasia di label.</div>
+        </div>
+
+        <div class="report-launch">
+          <div class="report-launch-copy">
+            <strong>Turn this scan into a client-ready report.</strong>
+            <span>Professional summary untuk dibawa ke owner/tim: health score, issue breakdown, scope estimate, dan safety notes.</span>
+          </div>
+          <button class="btn" type="button" data-build-report disabled>BUILD RESCUE REPORT</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section intake-section" id="intake" aria-labelledby="intake-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><div class="kicker">V7.1 / CLIENT INTAKE</div><h2 id="intake-title">Can I rescue this?<br>Jawab 6 hal.</h2></div>
+      <p>Wizard ini ngubah hasil X-Ray jadi brief proyek yang lebih berguna: deadline, frekuensi workflow, output yang dibutuhkan, sensitivitas data, dan seberapa banyak keputusan manual yang mungkin diperlukan.</p>
+    </div>
+
+    <div class="intake-shell reveal" data-intake>
+      <div class="intake-head">
+        <div>
+          <h3>Scope Builder</h3>
+          <p>Bisa dipakai setelah X-Ray atau tanpa upload file. Kalau X-Ray sudah dijalankan, hasil scan otomatis ikut masuk ke brief.</p>
+        </div>
+        <div class="intake-progress">
+          <div class="intake-progress-top"><span>progress</span><b data-intake-progress-label>1 / 6</b></div>
+          <div class="intake-progress-track"><i data-intake-progress></i></div>
+        </div>
+      </div>
+
+      <div class="intake-body">
+        <div class="intake-stage">
+
+          <div class="intake-step active" data-intake-step="0">
+            <small>01 / FREQUENCY</small>
+            <h4>Masalah ini terjadi sekali atau berulang?</h4>
+            <div class="choice-grid">
+              <div class="choice"><input type="radio" name="frequency" id="freq-once" value="One-time" checked><label for="freq-once"><strong>One-time</strong><span>Sekali bersihin / merge / rescue lalu selesai.</span></label></div>
+              <div class="choice"><input type="radio" name="frequency" id="freq-weekly" value="Weekly"><label for="freq-weekly"><strong>Weekly</strong><span>Export / laporan yang muncul tiap minggu.</span></label></div>
+              <div class="choice"><input type="radio" name="frequency" id="freq-monthly" value="Monthly"><label for="freq-monthly"><strong>Monthly</strong><span>Rekap bulanan atau workflow rutin.</span></label></div>
+              <div class="choice"><input type="radio" name="frequency" id="freq-unsure" value="Not sure"><label for="freq-unsure"><strong>Not sure yet</strong><span>Belum tahu apakah nanti perlu automation.</span></label></div>
+            </div>
+          </div>
+
+          <div class="intake-step" data-intake-step="1">
+            <small>02 / DEADLINE</small>
+            <h4>Kapan hasilnya dibutuhkan?</h4>
+            <div class="choice-grid">
+              <div class="choice"><input type="radio" name="deadline" id="dead-flex" value="Flexible" checked><label for="dead-flex"><strong>Flexible</strong><span>Tidak urgent. Bisa dijadwalkan normal.</span></label></div>
+              <div class="choice"><input type="radio" name="deadline" id="dead-week" value="3–7 days"><label for="dead-week"><strong>3–7 days</strong><span>Ada target, tapi masih realistis.</span></label></div>
+              <div class="choice"><input type="radio" name="deadline" id="dead-fast" value="24–48 hours"><label for="dead-fast"><strong>24–48 hours</strong><span>Urgent. Perlu cek kapasitas dulu.</span></label></div>
+              <div class="choice"><input type="radio" name="deadline" id="dead-hard" value="Same day"><label for="dead-hard"><strong>Same day</strong><span>Rush scope. Bisa jadi manual quote.</span></label></div>
+            </div>
+          </div>
+
+          <div class="intake-step" data-intake-step="2">
+            <small>03 / OUTPUT</small>
+            <h4>Output utama yang kamu butuhkan?</h4>
+            <div class="choice-grid">
+              <div class="choice"><input type="radio" name="output" id="out-clean" value="Cleaned spreadsheet" checked><label for="out-clean"><strong>Cleaned file</strong><span>Master CSV/XLSX yang sudah rapi + logs.</span></label></div>
+              <div class="choice"><input type="radio" name="output" id="out-dash" value="Cleaned file + dashboard"><label for="out-dash"><strong>File + dashboard</strong><span>Data bersih plus summary/dashboard sederhana.</span></label></div>
+              <div class="choice"><input type="radio" name="output" id="out-auto" value="Repeatable automation"><label for="out-auto"><strong>Automation</strong><span>Workflow yang bisa dijalankan lagi untuk file berikutnya.</span></label></div>
+              <div class="choice"><input type="radio" name="output" id="out-unsure" value="Not sure"><label for="out-unsure"><strong>Not sure</strong><span>Biarkan audit menentukan bentuk deliverable terbaik.</span></label></div>
+            </div>
+          </div>
+
+          <div class="intake-step" data-intake-step="3">
+            <small>04 / BUSINESS RULES</small>
+            <h4>Seberapa jelas aturan datanya?</h4>
+            <div class="choice-grid">
+              <div class="choice"><input type="radio" name="rules" id="rules-clear" value="Clear rules" checked><label for="rules-clear"><strong>Clear</strong><span>Mapping, kategori, dan hasil yang diinginkan sudah jelas.</span></label></div>
+              <div class="choice"><input type="radio" name="rules" id="rules-some" value="Some ambiguity"><label for="rules-some"><strong>Some ambiguity</strong><span>Ada beberapa value yang perlu ditanya / direview.</span></label></div>
+              <div class="choice"><input type="radio" name="rules" id="rules-many" value="Many manual decisions"><label for="rules-many"><strong>Many decisions</strong><span>Banyak mapping/kategori yang butuh keputusan manusia.</span></label></div>
+              <div class="choice"><input type="radio" name="rules" id="rules-unknown" value="Unknown"><label for="rules-unknown"><strong>Unknown</strong><span>Belum tahu. Audit dulu.</span></label></div>
+            </div>
+          </div>
+
+          <div class="intake-step" data-intake-step="4">
+            <small>05 / DATA SENSITIVITY</small>
+            <h4>Jenis datanya seberapa sensitif?</h4>
+            <div class="choice-grid">
+              <div class="choice"><input type="radio" name="sensitivity" id="sens-normal" value="Normal business data" checked><label for="sens-normal"><strong>Normal business data</strong><span>Produk, stok, order, operasional biasa.</span></label></div>
+              <div class="choice"><input type="radio" name="sensitivity" id="sens-conf" value="Confidential business data"><label for="sens-conf"><strong>Confidential</strong><span>Internal company data yang tidak boleh dipublikasikan.</span></label></div>
+              <div class="choice"><input type="radio" name="sensitivity" id="sens-pii" value="Contains personal/customer data"><label for="sens-pii"><strong>Contains PII</strong><span>Nama pelanggan, email, alamat, atau identifier pribadi.</span></label></div>
+              <div class="choice"><input type="radio" name="sensitivity" id="sens-reg" value="Regulated / high-stakes"><label for="sens-reg"><strong>Regulated / high-stakes</strong><span>Finance/health/legal/compliance → manual review required.</span></label></div>
+            </div>
+          </div>
+
+          <div class="intake-step" data-intake-step="5">
+            <small>06 / HANDOFF</small>
+            <h4>Apa yang paling penting saat delivery?</h4>
+            <div class="choice-grid">
+              <div class="choice"><input type="radio" name="handoff" id="hand-simple" value="Simple clean output" checked><label for="hand-simple"><strong>Simple output</strong><span>File jadi + ringkasan perubahan.</span></label></div>
+              <div class="choice"><input type="radio" name="handoff" id="hand-audit" value="Detailed audit trail"><label for="hand-audit"><strong>Audit trail</strong><span>Log perubahan dan exception yang lebih detail.</span></label></div>
+              <div class="choice"><input type="radio" name="handoff" id="hand-doc" value="Documentation / SOP"><label for="hand-doc"><strong>Documentation</strong><span>Perlu SOP / instruksi supaya tim bisa lanjut sendiri.</span></label></div>
+              <div class="choice"><input type="radio" name="handoff" id="hand-call" value="Walkthrough / explanation"><label for="hand-call"><strong>Walkthrough</strong><span>Butuh penjelasan hasil dan keputusan penting.</span></label></div>
+            </div>
+          </div>
+
+        </div>
+
+        <aside class="intake-side">
+          <h4>Live brief</h4>
+          <div class="intake-summary">
+            <div class="intake-summary-row"><span>X-Ray</span><b data-intake-summary="xray">Not scanned</b></div>
+            <div class="intake-summary-row"><span>Frequency</span><b data-intake-summary="frequency">One-time</b></div>
+            <div class="intake-summary-row"><span>Deadline</span><b data-intake-summary="deadline">Flexible</b></div>
+            <div class="intake-summary-row"><span>Output</span><b data-intake-summary="output">Cleaned spreadsheet</b></div>
+            <div class="intake-summary-row"><span>Rules</span><b data-intake-summary="rules">Clear rules</b></div>
+            <div class="intake-summary-row"><span>Sensitivity</span><b data-intake-summary="sensitivity">Normal business data</b></div>
+            <div class="intake-summary-row"><span>Handoff</span><b data-intake-summary="handoff">Simple clean output</b></div>
+          </div>
+          <div class="intake-note">Wizard ini tidak mengirim data ke server. Hasilnya cuma dipakai untuk membuat brief di browser kamu.</div>
+        </aside>
+      </div>
+
+      <div class="intake-footer">
+        <div class="intake-footer-left">
+          <button class="btn secondary" type="button" data-intake-prev disabled>← BACK</button>
+        </div>
+        <div class="intake-footer-right">
+          <button class="btn primary" type="button" data-intake-next>NEXT →</button>
+          <button class="btn primary" type="button" data-intake-finish hidden>BUILD SCOPE BRIEF</button>
+        </div>
+      </div>
+
+      <div class="intake-result" data-intake-result>
+        <div class="intake-result-grid">
+          <div class="intake-result-card">
+            <small>Updated recommendation</small>
+            <h4 data-intake-package>—</h4>
+            <div class="intake-price" data-intake-price>—</div>
+            <div class="intake-price-note" data-intake-price-note>Final quote tetap perlu cek sample dan business rules.</div>
+          </div>
+          <div class="intake-result-card">
+            <small>Scope brief — ready to paste</small>
+            <textarea class="scope-brief" data-scope-brief readonly aria-label="Generated scope brief"></textarea>
+            <div class="result-actions">
+              <button class="btn primary" type="button" data-copy-brief>COPY BRIEF</button>
+              <button class="btn secondary" type="button" data-download-brief>DOWNLOAD .TXT</button>
+              <button class="btn secondary" type="button" data-edit-brief>EDIT ANSWERS</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section history-section" id="history" aria-labelledby="history-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><div class="kicker">V9 / LOCAL HISTORY</div><h2 id="history-title">Scan banyak file.<br>Bandingin health-nya.</h2></div>
+      <p>History menyimpan metadata hasil X-Ray di browser ini saja — bukan source CSV/XLSX. Pilih dua scan untuk compare, buka ulang report, atau hapus history kapan pun.</p>
+    </div>
+
+    <div class="history-shell reveal" data-history>
+      <div class="history-toolbar">
+        <div><strong>Local Scan History</strong><span>Max 12 scan summaries • device-local storage</span></div>
+        <button class="btn secondary" type="button" data-history-clear>CLEAR HISTORY</button>
+      </div>
+      <div class="history-stats">
+        <div class="history-stat"><small>Saved scans</small><b data-history-stat="count">0</b></div>
+        <div class="history-stat"><small>Average health</small><b data-history-stat="avg">—</b></div>
+        <div class="history-stat"><small>Lowest health</small><b data-history-stat="low">—</b></div>
+        <div class="history-stat"><small>Total rows scanned</small><b data-history-stat="rows">0</b></div>
+      </div>
+      <div class="history-list" data-history-list>
+        <div class="history-empty">Belum ada scan yang tersimpan. Jalankan Data X-Ray; summary-nya otomatis muncul di sini.</div>
+      </div>
+      <div class="history-compare" data-history-compare>
+        <div class="compare-head"><h3>Side-by-side comparison</h3><span>Pilih tepat 2 scan dari history</span></div>
+        <div data-compare-content></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="demo">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><div class="kicker">INTERACTIVE DEMO</div><h2>Lihat datanya<br>beneran berubah.</h2></div>
+      <p>Pilih tahap. Visualnya menunjukkan apa yang boleh diubah otomatis dan apa yang harus berhenti di human review.</p>
+    </div>
+
+    <div class="demo-stage reveal" data-demo>
+      <div class="demo-top">
+        <strong>august_orders.csv → master_orders.xlsx</strong>
+        <div class="stage-tabs">
+          <button class="stage-btn active" data-stage="0" type="button">1. INSPECT</button>
+          <button class="stage-btn" data-stage="1" type="button">2. CLEAN</button>
+          <button class="stage-btn" data-stage="2" type="button">3. QUARANTINE</button>
+          <button class="stage-btn" data-stage="3" type="button">4. RECONCILE</button>
+        </div>
+      </div>
+      <div class="demo-body">
+        <div class="demo-table">
+          <div class="demo-head"><span>SOURCE</span><span>DATE</span><span>PRODUCT</span><span>AMOUNT</span><span>STATE</span></div>
+          <div class="demo-r" data-row="a"><span>jul:19</span><span data-date>12/08/26</span><span data-prod>kopi  PAGI 200g</span><span data-amt>Rp28.000</span><span class="state-pill" data-state>raw</span></div>
+          <div class="demo-r" data-row="b"><span>aug:44</span><span data-date>Aug 12 2026</span><span data-prod>MI GURIH AYAM</span><span data-amt>3,500</span><span class="state-pill" data-state>raw</span></div>
+          <div class="demo-r review" data-row="c"><span>aug:71</span><span data-date>31/02/2026</span><span data-prod>Wafer Gembira</span><span data-amt>Rp??</span><span class="state-pill" data-state>raw</span></div>
+          <div class="demo-r review" data-row="d"><span>aug:98</span><span data-date>2026-08-14</span><span data-prod>Mi Gurih</span><span data-amt>3,800</span><span class="state-pill" data-state>raw</span></div>
+        </div>
+        <aside class="review-rail">
+          <h4>HUMAN REVIEW</h4>
+          <div class="review-item hidden" data-review="c">aug:71 — invalid date + invalid price</div>
+          <div class="review-item hidden" data-review="d">aug:98 — ambiguous product</div>
+        </aside>
+      </div>
+      <div class="equation">
+        <span class="eq-pill">RAW 458</span><span>=</span><span class="eq-pill">CLEAN <b data-eq-clean>—</b></span><span>+</span><span class="eq-pill">EXC <b data-eq-exc>—</b></span><span>+</span><span class="eq-pill">DUP 10</span>
+        <strong class="eq-status" data-eq-status>PENDING</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="proof">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><div class="kicker">PROOF, NOT PROMISES</div><h2>Angka yang bisa<br>dibuka & dicek.</h2></div>
+      <p>Demo ini synthetic, tapi artefaknya nyata. Workbook lengkap bisa diperiksa: raw, clean master, warnings, blocking exceptions, duplicates, dan reconciliation.</p>
+    </div>
+    <div class="proof-layout">
+      <article class="proof-big reveal">
+        <div class="num">458</div>
+        <div><h3>Raw rows masuk.</h3><p>Dan semuanya harus punya nasib yang jelas: clean, blocked untuk review, atau exact duplicate yang aman dibuang.</p></div>
+      </article>
+      <div class="proof-stack">
+        <article class="proof-small reveal"><b>332</b><span>clean rows</span></article>
+        <article class="proof-small reveal"><b>116</b><span>blocking exceptions</span></article>
+        <article class="proof-small reveal"><b>36</b><span>non-blocking warnings</span></article>
+        <article class="proof-small reveal"><b>PASS</b><span>row reconciliation</span></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section blue">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><div class="kicker">WORKFLOW</div><h2>Simple flow.<br>No mystery.</h2></div>
+      <p>Client nggak perlu peduli tool apa yang kupakai. Yang penting prosesnya jelas, reversibel, dan output-nya bisa diperiksa.</p>
+    </div>
+    <div class="process-line">
+      <article class="process-card reveal"><div class="bubble">01</div><h3>Sample</h3><p>Kirim contoh file yang aman dibagikan + jelaskan masalahnya.</p></article>
+      <article class="process-card reveal"><div class="bubble">02</div><h3>Audit</h3><p>Aku tentukan apa yang aman diotomatisasi dan apa yang harus human-review.</p></article>
+      <article class="process-card reveal"><div class="bubble">03</div><h3>Rescue</h3><p>Normalize, validate, dedupe, reconcile, lalu QA hasilnya.</p></article>
+      <article class="process-card reveal"><div class="bubble">04</div><h3>Deliver</h3><p>Master workbook + logs + summary yang bisa ditelusuri balik.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><div class="kicker">PILOT PRICING</div><h2>Start kecil.<br>Buktikan dulu.</h2></div>
+      <p>Harga validasi awal. Scope final setelah melihat sample supaya kerjaan kecil nggak tiba-tiba berubah jadi ERP satu perusahaan.</p>
+    </div>
+    <div class="pricing-grid">
+      <article class="price reveal"><div class="price-tag">QUICK FIX</div><h3>Small pain</h3><p>Formula, merge sederhana, duplicate cleanup, formatting, validation kecil.</p><div class="money">Rp75–150k</div><ul><li>scope kecil</li><li>deliverable jelas</li><li>no app build</li></ul><a href="#start" class="btn">KIRIM SAMPLE</a></article>
+      <article class="price featured reveal"><div class="price-tag">BEST START</div><h3>Data Rescue</h3><p>Multi-file cleanup, normalization, exception log, duplicate audit, summary.</p><div class="money">Rp150–350k</div><ul><li>before / after</li><li>audit trail</li><li>human-review flags</li></ul><a href="#start" class="btn">MULAI DARI SINI</a></article>
+      <article class="price reveal"><div class="price-tag">AUTOMATION</div><h3>Repeatable</h3><p>Kalau problem muncul tiap minggu/bulan, prosesnya bisa dijadikan workflow berulang.</p><div class="money">Rp350k+</div><ul><li>quote after audit</li><li>client-funded infra</li><li>separate scope</li></ul><a href="#start" class="btn">AUDIT DULU</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="start">
+  <div class="wrap">
+    <div class="start-card reveal">
+      <div><div class="kicker">FIRST STEP</div><h2>Kasih aku file yang bikin kamu males buka Excel.</h2></div>
+      <div><p>Kirim sample kecil lewat platform tempat kamu menemukan portfolio ini. Aku cek dulu scope, risiko, dan output yang realistis.</p><div class="start-actions"><a class="btn" href="spreadsheet_rescue_demo_v2.xlsx" download>DOWNLOAD DEMO WORKBOOK</a><a class="btn" href="master_orders_clean_demo.csv" download>DOWNLOAD CLEAN CSV</a></div></div>
+      <div class="legal">Synthetic portfolio demo • no fake testimonials • no fake client logos • paid API/domain/hosting hanya digunakan setelah disepakati dan didanai client.</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap footer-row"><span>Spreadsheet Rescue — pilot service</span><span>Clean data. Clear receipts.</span></div>
+</footer>
+</div>
+
+
+
+<dialog class="rescue-report-dialog" data-report-dialog aria-label="Client Rescue Report preview">
+  <div class="report-toolbar">
+    <div class="report-toolbar-left"><span>CLIENT RESCUE REPORT</span></div>
+    <div class="report-toolbar-actions">
+      <button class="btn primary" type="button" data-report-share>SHARE LINK / QR</button>
+      <button class="btn primary" type="button" data-report-print>PRINT / SAVE PDF</button>
+      <button class="btn secondary" type="button" data-report-download>DOWNLOAD HTML</button>
+      <button class="report-close" type="button" data-report-close aria-label="Close report">×</button>
+    </div>
+  </div>
+  <div class="report-share-tray" data-report-share-tray>
+    <div class="share-copy">
+      <h3>Link-style handoff</h3>
+      <p>Link membawa <strong>summary report + quote/intake + branding</strong> di URL fragment. Source rows/file tidak ikut. Kalau halaman ini masih dibuka sebagai file lokal, link hanya berguna di device/path yang sama; setelah hosted, link jadi cross-device.</p>
+      <div class="share-link-row">
+        <input type="text" readonly data-report-share-link aria-label="Shareable rescue report link">
+        <button class="btn primary" type="button" data-report-copy-link>COPY LINK</button>
+      </div>
+      <div class="share-warning" data-share-warning>Generate report dulu.</div>
+    </div>
+    <div class="qr-wrap" data-qr-wrap><div class="qr-fallback">QR akan muncul setelah share link dibuat.</div></div>
+  </div>
+  <div class="report-scroll">
+    <article class="client-report" data-client-report></article>
+  </div>
+</dialog>
+
+
+<script defer src="vendor/xlsx.full.min.js"></script>
+<script defer src="vendor/qrcode.min.js"></script>
+<script defer src="assets/app.js?v=10.0.0"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "spreadsheet-rescue-v10",
+  "private": true,
+  "version": "10.0.0",
+  "type": "module",
+  "scripts": {
+    "vendor": "node scripts/vendor-deps.mjs",
+    "preflight": "node scripts/preflight.mjs",
+    "finalize": "npm run vendor && npm run preflight"
+  }
+}

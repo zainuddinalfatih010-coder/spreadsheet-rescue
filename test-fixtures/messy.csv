@@ -1,0 +1,5 @@
+order_id,order_date,customer,qty,unit_price,total
+A1,12/08/26,"  Ayu   Putri  ",2,Rp28.000,56000
+A2,31/02/2026,Bima,1,3500,3500
+A2,31/02/2026,Bima,1,3500,3500
+A3,2026-08-14,,3,4000,13000

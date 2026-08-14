@@ -1,0 +1,333 @@
+﻿order_id,order_date,customer_name,phone,sku,product_name,quantity,unit_price,line_total,source_file,source_row,raw_product_name
+ORD-10001,2026-08-16,Laras Nugroho,+6289096811240,SH080,Sabun Harum 80g,1,6500,6500,orders_july.csv,2,Sabun Harum 80g
+ORD-10002,2026-07-25,Raka Rahma,,DSP45,Deterjen Segar Pagi 450g,1,15500,15500,orders_july.csv,3,Produk Misterius
+ORD-10004,2026-07-02,Hana Rahma,,SKR80,Susu Kotak Rasa 180ml,5,7000,35000,orders_july.csv,5,susu kotak rasa 180ml
+ORD-10006,2026-07-05,Vina Saputra,+6282083542838,TS025,Teh Senja 25 Sachet,7,17000,119000,orders_july.csv,7,Teh Senja 25 Sachet
+ORD-10007,2026-07-17,Galih Wulandari,+6285358308350,BR120,Biskuit Rimba 120g,4,12000,48000,orders_july.csv,8,BISKUIT RIMBA 120G
+ORD-10008,2026-07-25,Bima Nugroho,+6287029237698,BR120,Biskuit Rimba 120g,3,12000,36000,orders_july.csv,9,Biskuit Rimba 120g
+ORD-10009,2026-07-14,Indra Rahma,+6285150717527,TS025,Teh Senja 25 Sachet,2,17000,34000,orders_july.csv,10,Teh Senja 25 Sachet
+ORD-10010,2026-07-27,Farah Rahma,+6281070228320,KRC10,Keripik Renyah Cabe 100g,5,11000,55000,orders_july.csv,11,Keripik Renyah Cabe 100g
+ORD-10011,2026-07-14,Jihan Saputra,+6282486976409,TS025,Teh Senja 25 Sachet,6,17000,102000,orders_july.csv,12,Teh   Senja   25   Sachet
+ORD-10012,2026-07-07,Eka Nugroho,+6286559807710,MDD1L,Minyak Dapur Desa 1L,8,19000,152000,orders_july.csv,13,MINYAK DAPUR DESA 1L
+ORD-10014,2026-07-16,Farah Pratama,+6286789388161,MDD1L,Minyak Dapur Desa 1L,2,19000,38000,orders_july.csv,15,Minyak Dapur Desa 1L
+ORD-10015,2026-07-23,Eka Rahma,+6281005205297,SKR80,Susu Kotak Rasa 180ml,7,7000,49000,orders_july.csv,16,susu kotak
+ORD-10016,2026-07-19,Indra Hidayat,+6281133406110,MGP01,Mi Gurih Pedas,3,3800,11400,orders_july.csv,17,Mi Gurih Pedas
+ORD-10018,2026-08-30,Dimas Wulandari,+6284383087490,SH080,Sabun Harum 80g,2,6500,13000,orders_july.csv,19,Sabun Harum 80g
+ORD-10019,2026-08-26,Eka Putra,+6283901847887,BR120,Biskuit Rimba 120g,4,12000,48000,orders_july.csv,20,BISKUIT RIMBA 120G
+ORD-10020,2026-08-20,Maya Nugroho,+6289630995215,MGA01,Mi Gurih Ayam,5,3500,17500,orders_july.csv,21,MI GURIH AYAM
+ORD-10021,2026-07-26,Farah Santoso,+6289474859051,MGA01,Mi Gurih Ayam,2,3500,7000,orders_july.csv,22,Mi Gurih Ayam
+ORD-10022,2026-07-24,Bima Hidayat,+6280876614871,WG110,Wafer Gembira 110g,5,9500,47500,orders_july.csv,23,wafer gembira 110g
+ORD-10023,2026-08-04,Vina Santoso,+6289586900173,MGA01,Mi Gurih Ayam,2,3500,7000,orders_july.csv,24,Mi Gurih Ayam
+ORD-10024,2026-08-02,Vina Santoso,+6288426674604,MDD1L,Minyak Dapur Desa 1L,4,19000,76000,orders_july.csv,25,Minyak Dapur Desa 1L
+ORD-10028,2026-08-26,Putri Saputra,+6281437899928,DSP45,Deterjen Segar Pagi 450g,1,15500,15500,orders_july.csv,29,DETERJEN SEGAR PAGI 450G
+ORD-10029,2026-08-11,Kiki Pratama,+6284725719149,SH080,Sabun Harum 80g,7,6500,45500,orders_july.csv,30,Sabun   Harum   80g
+ORD-10030,2026-07-16,Hana Nugroho,+6281322999725,DSP45,Deterjen Segar Pagi 450g,6,15500,93000,orders_july.csv,31,DETERJEN SEGAR PAGI 450G
+ORD-10031,2026-07-23,Maya Utami,,DSP45,Deterjen Segar Pagi 450g,7,15500,108500,orders_july.csv,32,Deterjen   Segar   Pagi   450g
+ORD-10032,2026-07-18,Putri Lestari,+6286790731747,KD001,Kopi Pagi 200g,5,28000,140000,orders_july.csv,33,Kopi Pagi 200g
+ORD-10033,2026-07-02,Sari Pratama,+6284327000498,MDD1L,Minyak Dapur Desa 1L,3,19000,57000,orders_july.csv,34,Minyak Dapur Desa 1L
+ORD-10035,2026-07-18,Laras Saputra,+6289581901953,SH080,Sabun Harum 80g,4,6500,26000,orders_july.csv,36,Sabun Harum 80g
+ORD-10036,2026-07-15,Eka Hidayat,+6284878712110,MDD1L,Minyak Dapur Desa 1L,6,19000,114000,orders_july.csv,37,Minyak Dapur Desa 1L
+ORD-10037,2026-07-08,Laras Rahma,,BR120,Biskuit Rimba 120g,8,12000,96000,orders_july.csv,38,Biskuit   Rimba   120g
+ORD-10040,2026-08-16,Hana Putra,+6287350694924,BR120,Biskuit Rimba 120g,2,12000,24000,orders_july.csv,41,Biskuit Rimba 120g
+ORD-10041,2026-07-24,Putri Wulandari,+6288819652450,DSP45,Deterjen Segar Pagi 450g,5,15500,77500,orders_july.csv,42,Deterjen Segar Pagi 450g
+ORD-10042,2026-08-29,Dimas Utami,+6288103956269,MDD1L,Minyak Dapur Desa 1L,6,19000,114000,orders_july.csv,43,Minyak Dapur Desa 1L
+ORD-10043,2026-08-08,Ayu Hidayat,+6289157008926,MGP01,Mi Gurih Pedas,4,3800,15200,orders_july.csv,44,Mi   Gurih   Pedas
+ORD-10045,2026-07-24,Nanda Lestari,+6284657349563,MGP01,Mi Gurih Pedas,2,3800,7600,orders_july.csv,46,Mi Gurih Pedas
+ORD-10046,2026-07-07,Eka Wulandari,+6289147159622,SPC25,Sereal Pagi Ceria 250g,5,24000,120000,orders_july.csv,47,Sereal Pagi Ceria 250g
+ORD-10047,2026-07-21,Putri Nugroho,+6289307457539,KD001,Kopi Pagi 200g,7,28000,196000,orders_july.csv,48,Kopi Pagi 200g
+ORD-10048,2026-08-26,Maya Putra,+6280361888517,DSP45,Deterjen Segar Pagi 450g,5,15500,77500,orders_july.csv,49,Deterjen Segar Pagi 450g
+ORD-10049,2026-08-09,Raka Pratama,+6285425494156,DSP45,Deterjen Segar Pagi 450g,4,15500,62000,orders_july.csv,50,Deterjen   Segar   Pagi   450g
+ORD-10051,2026-07-05,Galih Saputra,+6285906578746,TS025,Teh Senja 25 Sachet,1,17000,17000,orders_july.csv,52,Teh Senja 25 Sachet
+ORD-10053,2026-08-13,Citra Lestari,+6284257740693,WG110,Wafer Gembira 110g,4,9500,38000,orders_july.csv,54,Wafer   Gembira   110g
+ORD-10054,2026-07-28,Galih Santoso,+6286012856454,KRC10,Keripik Renyah Cabe 100g,7,11000,77000,orders_july.csv,55,sabun
+ORD-10057,2026-08-17,Eka Nugroho,+6284397571974,MGP01,Mi Gurih Pedas,4,3800,15200,orders_july.csv,58,Mi   Gurih   Pedas
+ORD-10058,2026-07-19,Bima Utami,+6284839026718,MGA01,Mi Gurih Ayam,6,3500,21000,orders_july.csv,59,Produk Misterius
+ORD-10060,2026-07-30,Jihan Nugroho,+6286882139400,DSP45,Deterjen Segar Pagi 450g,7,15500,108500,orders_july.csv,61,deterjen segar pagi 450g
+ORD-10061,2026-07-26,Laras Nugroho,+6288674551455,DSP45,Deterjen Segar Pagi 450g,5,15500,77500,orders_july.csv,62,Deterjen Segar Pagi 450g
+ORD-10063,2026-07-25,Oki Putra,+6281397679032,SPC25,Sereal Pagi Ceria 250g,5,24000,120000,orders_july.csv,64,Sereal   Pagi   Ceria   250g
+ORD-10064,2026-07-19,Dimas Santoso,+6280690697264,TS025,Teh Senja 25 Sachet,2,17000,34000,orders_july.csv,65,TEH SENJA 25 SACHET
+ORD-10066,2026-08-02,Ayu Rahma,+6287253324444,SH080,Sabun Harum 80g,7,6500,45500,orders_july.csv,67,Sabun Harum 80g
+ORD-10068,2026-08-26,Vina Pratama,+6285648797523,MDD1L,Minyak Dapur Desa 1L,7,19000,133000,orders_july.csv,69,minyak dapur desa 1l
+ORD-10069,2026-07-11,Farah Lestari,+6280322983542,MGP01,Mi Gurih Pedas,6,3800,22800,orders_july.csv,70,mi gurih pedas
+ORD-10071,2026-08-03,Vina Putra,+6286899857438,MGA01,Mi Gurih Ayam,4,3500,14000,orders_july.csv,72,Mi Gurih Ayam
+ORD-10073,2026-08-18,Laras Santoso,+6287014868452,KD001,Kopi Pagi 200g,6,28000,168000,orders_july.csv,74,Kopi Pagi 200g
+ORD-10074,2026-08-24,Maya Rahma,+6281070009231,DSP45,Deterjen Segar Pagi 450g,1,15500,15500,orders_july.csv,75,Deterjen Segar Pagi 450g
+ORD-10076,2026-07-08,Ayu Nugroho,+6286345940155,MGP01,Mi Gurih Pedas,1,3800,3800,orders_july.csv,77,Mi Gurih Pedas
+ORD-10077,2026-07-25,Oki Nugroho,+6281335476381,MGP01,Mi Gurih Pedas,1,3800,3800,orders_july.csv,78,Mi Gurih Pedas
+ORD-10080,2026-08-13,Vina Putra,+6287918152232,SKR80,Susu Kotak Rasa 180ml,8,7000,56000,orders_july.csv,81,Susu Kotak Rasa 180ml
+ORD-10081,2026-07-16,Kiki Utami,+6282487338490,BR120,Biskuit Rimba 120g,1,12000,12000,orders_july.csv,82,biskuit rimba 120g
+ORD-10082,2026-07-15,Oki Santoso,,KD001,Kopi Pagi 200g,3,28000,84000,orders_july.csv,83,KOPI PAGI 200G
+ORD-10083,2026-07-11,Tio Utami,,MDD1L,Minyak Dapur Desa 1L,4,19000,76000,orders_july.csv,84,minyak dapur desa 1l
+ORD-10084,2026-07-25,Jihan Wulandari,+6282428982301,SKR80,Susu Kotak Rasa 180ml,3,7000,21000,orders_july.csv,85,SUSU KOTAK RASA 180ML
+ORD-10085,2026-07-22,Tio Wulandari,+6289053008127,WG110,Wafer Gembira 110g,2,9500,19000,orders_july.csv,86,WAFER GEMBIRA 110G
+ORD-10086,2026-07-14,Dimas Santoso,+6289337398886,BR120,Biskuit Rimba 120g,1,12000,12000,orders_july.csv,87,Produk Misterius
+ORD-10088,2026-07-10,Ayu Hidayat,+6285413176620,MGA01,Mi Gurih Ayam,2,3500,7000,orders_july.csv,89,Mi   Gurih   Ayam
+ORD-10089,2026-08-05,Vina Saputra,+6283307717659,MGA01,Mi Gurih Ayam,3,3500,10500,orders_july.csv,90,Mie Gurih Ayam
+ORD-10090,2026-08-07,Citra Rahma,+6287700107329,BR120,Biskuit Rimba 120g,6,12000,72000,orders_july.csv,91,sabun
+ORD-10091,2026-08-25,Bima Putra,+6287747638333,MDD1L,Minyak Dapur Desa 1L,6,19000,114000,orders_july.csv,92,MINYAK DAPUR DESA 1L
+ORD-10092,2026-07-30,Tio Rahma,+6281505030766,KD001,Kopi Pagi 200g,7,28000,196000,orders_july.csv,93,Kopi Pagi 200g
+ORD-10093,2026-08-08,Tio Santoso,+6287206908966,SH080,Sabun Harum 80g,5,6500,32500,orders_july.csv,94,SABUN HARUM 80G
+ORD-10095,2026-07-24,Raka Rahma,+6289236649900,TS025,Teh Senja 25 Sachet,7,17000,119000,orders_july.csv,96,Teh Senja 25 Sachet
+ORD-10096,2026-08-11,Vina Santoso,,KRC10,Keripik Renyah Cabe 100g,2,11000,22000,orders_july.csv,97,keripik renyah cabe 100g
+ORD-10099,2026-08-17,Sari Santoso,+6283806373743,TS025,Teh Senja 25 Sachet,5,17000,85000,orders_july.csv,100,TEH SENJA 25 SACHET
+ORD-10101,2026-07-20,Jihan Utami,+6288580231738,SH080,Sabun Harum 80g,7,6500,45500,orders_july.csv,102,sabun harum 80g
+ORD-10103,2026-08-23,Putri Wulandari,+6284407225612,WG110,Wafer Gembira 110g,8,9500,76000,orders_july.csv,104,Wafer Gembira 110g
+ORD-10104,2026-08-29,Putri Saputra,+6285049910452,BR120,Biskuit Rimba 120g,1,12000,12000,orders_july.csv,105,Biskuit Rimba 120g
+ORD-10105,2026-08-11,Farah Putra,+6283409073970,MGP01,Mi Gurih Pedas,7,3800,26600,orders_july.csv,106,mi gurih pedas
+ORD-10107,2026-07-31,Citra Pratama,+6284242099438,MDD1L,Minyak Dapur Desa 1L,7,19000,133000,orders_july.csv,108,MINYAK DAPUR DESA 1L
+ORD-10108,2026-07-02,Indra Hidayat,+6280276982886,BR120,Biskuit Rimba 120g,5,12000,60000,orders_july.csv,109,Biskuit Rimba 120g
+ORD-10109,2026-08-20,Raka Nugroho,+6285080808816,SKR80,Susu Kotak Rasa 180ml,7,7000,49000,orders_july.csv,110,Susu Kotak Rasa 180ml
+ORD-10111,2026-07-21,Bima Utami,,KD001,Kopi Pagi 200g,7,28000,196000,orders_july.csv,112,KOPI PAGI 200G
+ORD-10112,2026-08-06,Vina Putra,+6287798514456,SH080,Sabun Harum 80g,2,6500,13000,orders_july.csv,113,sabun harum 80g
+ORD-10113,2026-07-12,Oki Putra,+6288973302640,SPC25,Sereal Pagi Ceria 250g,5,24000,120000,orders_july.csv,114,Sereal Pagi Ceria 250g
+ORD-10114,2026-08-25,Raka Wulandari,+6287148417334,BR120,Biskuit Rimba 120g,4,12000,48000,orders_july.csv,115,susu kotak
+ORD-10115,2026-08-23,Dimas Pratama,+6284384763782,KRC10,Keripik Renyah Cabe 100g,5,11000,55000,orders_july.csv,116,Produk Misterius
+ORD-10116,2026-07-22,Sari Lestari,+6282691537002,BR120,Biskuit Rimba 120g,1,12000,12000,orders_july.csv,117,biskuit rimba 120g
+ORD-10118,2026-08-12,Dimas Saputra,+6284084182636,MDD1L,Minyak Dapur Desa 1L,7,19000,133000,orders_july.csv,119,Minyak Dapur Desa 1L
+ORD-10120,2026-08-07,Bima Santoso,+6289197100727,MGP01,Mi Gurih Pedas,4,3800,15200,orders_july.csv,121,Mi Gurih Pedas
+ORD-10121,2026-08-20,Hana Rahma,+6280372767635,MGA01,Mi Gurih Ayam,6,3500,21000,orders_july.csv,122,Mi   Gurih   Ayam
+ORD-10123,2026-07-14,Vina Wulandari,+6281842804531,MDD1L,Minyak Dapur Desa 1L,1,19000,19000,orders_july.csv,124,Minyak Dapur Desa 1L
+ORD-10124,2026-07-04,Oki Hidayat,+6281300051862,TS025,Teh Senja 25 Sachet,8,17000,136000,orders_july.csv,125,Teh Senja 25s
+ORD-10125,2026-07-05,Jihan Utami,+6286255978179,KRC10,Keripik Renyah Cabe 100g,1,11000,11000,orders_july.csv,126,keripik renyah cabe 100g
+ORD-10126,2026-07-20,Oki Hidayat,+6280594014876,KD001,Kopi Pagi 200g,5,28000,140000,orders_july.csv,127,kopi pagi 200g
+ORD-10127,2026-07-10,Citra Utami,+6285965015078,KRC10,Keripik Renyah Cabe 100g,6,11000,66000,orders_july.csv,128,Keripik Renyah Cabe 100g
+ORD-10128,2026-08-24,Ayu Saputra,+6288511247477,WG110,Wafer Gembira 110g,3,9500,28500,orders_july.csv,129,wafer gembira 110g
+ORD-10129,2026-07-24,Hana Hidayat,,MDD1L,Minyak Dapur Desa 1L,1,19000,19000,orders_july.csv,130,minyak dapur desa 1l
+ORD-10130,2026-07-14,Oki Wulandari,+6283044990248,MGP01,Mi Gurih Pedas,3,3800,11400,orders_july.csv,131,Mi Gurih Pedas
+ORD-10131,2026-08-02,Laras Pratama,+6288715968099,MGP01,Mi Gurih Pedas,2,3800,7600,orders_july.csv,132,Mi   Gurih   Pedas
+ORD-10133,2026-07-29,Galih Pratama,+6286783280773,MDD1L,Minyak Dapur Desa 1L,5,19000,95000,orders_july.csv,134,Minyak Dapur Desa 1L
+ORD-10135,2026-07-27,Eka Lestari,+6285092385100,MGA01,Mi Gurih Ayam,2,3500,7000,orders_july.csv,136,MI GURIH AYAM
+ORD-10137,2026-07-16,Kiki Lestari,+6285012872052,SKR80,Susu Kotak Rasa 180ml,7,7000,49000,orders_july.csv,138,Susu Kotak Rasa 180ml
+ORD-10138,2026-07-14,Vina Rahma,+6283453990985,SPC25,Sereal Pagi Ceria 250g,5,24000,120000,orders_july.csv,139,SEREAL PAGI CERIA 250G
+ORD-10139,2026-07-26,Putri Rahma,+6281459659815,TS025,Teh Senja 25 Sachet,3,17000,51000,orders_july.csv,140,Teh Senja 25 Sachet
+ORD-10140,2026-08-19,Putri Wulandari,+6289833036315,MGP01,Mi Gurih Pedas,8,3800,30400,orders_july.csv,141,MI GURIH PEDAS
+ORD-10141,2026-08-03,Sari Pratama,+6289516816970,SPC25,Sereal Pagi Ceria 250g,4,24000,96000,orders_july.csv,142,sereal pagi ceria 250g
+ORD-10142,2026-07-05,Putri Wulandari,+6284936991653,KRC10,Keripik Renyah Cabe 100g,3,11000,33000,orders_july.csv,143,Keripik Renyah Cabe 100g
+ORD-10144,2026-08-13,Ayu Saputra,+6288123853660,KRC10,Keripik Renyah Cabe 100g,3,11000,33000,orders_july.csv,145,keripik renyah cabe 100g
+ORD-10145,2026-07-12,Maya Pratama,+6281853752201,TS025,Teh Senja 25 Sachet,2,17000,34000,orders_july.csv,146,Teh Senja 25 Sachet
+ORD-10146,2026-07-03,Bima Rahma,+6281787983142,MGA01,Mi Gurih Ayam,8,3500,28000,orders_july.csv,147,Mi   Gurih   Ayam
+ORD-10148,2026-07-30,Vina Rahma,+6286878238969,SKR80,Susu Kotak Rasa 180ml,6,7000,42000,orders_july.csv,149,Susu Kotak Rasa 180ml
+ORD-10149,2026-07-12,Laras Putra,+6288738840101,KRC10,Keripik Renyah Cabe 100g,3,11000,33000,orders_july.csv,150,susu kotak
+ORD-10150,2026-07-02,Kiki Lestari,,KD001,Kopi Pagi 200g,8,28000,224000,orders_july.csv,151,Kopi Pagi 200g
+ORD-10151,2026-08-14,Citra Rahma,,SH080,Sabun Harum 80g,2,6500,13000,orders_july.csv,152,Sabun Harum 80g
+ORD-10152,2026-07-27,Bima Nugroho,+6283923865476,KRC10,Keripik Renyah Cabe 100g,7,11000,77000,orders_july.csv,153,Keripik   Renyah   Cabe   100g
+ORD-10153,2026-07-28,Bima Utami,+6280150854551,SPC25,Sereal Pagi Ceria 250g,7,24000,168000,orders_july.csv,154,Sereal Pagi Ceria 250g
+ORD-10154,2026-07-28,Eka Hidayat,+6287442590499,SKR80,Susu Kotak Rasa 180ml,2,7000,14000,orders_july.csv,155,SUSU KOTAK RASA 180ML
+ORD-10155,2026-08-03,Tio Rahma,+6284930640005,WG110,Wafer Gembira 110g,4,9500,38000,orders_july.csv,156,Wafer Gembira 110g
+ORD-10156,2026-08-17,Citra Rahma,+6283280029423,KD001,Kopi Pagi 200g,5,28000,140000,orders_july.csv,157,Kopi   Pagi   200g
+ORD-10157,2026-07-18,Hana Santoso,+6281794721915,MGP01,Mi Gurih Pedas,4,3800,15200,orders_july.csv,158,Mi Gurih Pedas
+ORD-10158,2026-07-03,Sari Hidayat,+6280887644906,SKR80,Susu Kotak Rasa 180ml,4,7000,28000,orders_july.csv,159,Susu Kotak Rasa 180ml
+ORD-10159,2026-07-24,Sari Utami,+6288526082457,SKR80,Susu Kotak Rasa 180ml,3,7000,21000,orders_july.csv,160,Susu Kotak Rasa 180ml
+ORD-10161,2026-07-29,Putri Hidayat,+6282757041986,KD001,Kopi Pagi 200g,4,28000,112000,orders_july.csv,162,Kopi Pagi 200g
+ORD-10163,2026-08-06,Kiki Putra,+6282682702087,BR120,Biskuit Rimba 120g,5,12000,60000,orders_july.csv,164,Biskuit Rimba 120g
+ORD-10164,2026-07-16,Tio Wulandari,+6286783378511,WG110,Wafer Gembira 110g,8,9500,76000,orders_july.csv,165,Wafer Gembira
+ORD-10165,2026-07-05,Citra Utami,+6286883709993,KD001,Kopi Pagi 200g,5,28000,140000,orders_july.csv,166,KOPI PAGI 200G
+ORD-10166,2026-08-22,Kiki Wulandari,,DSP45,Deterjen Segar Pagi 450g,1,15500,15500,orders_july.csv,167,Deterjen Segar Pagi 450g
+ORD-10168,2026-07-23,Farah Santoso,+6289015533427,MGP01,Mi Gurih Pedas,5,3800,19000,orders_july.csv,169,Mi   Gurih   Pedas
+ORD-10169,2026-08-05,Raka Lestari,+6284716966478,MGP01,Mi Gurih Pedas,5,3800,19000,orders_july.csv,170,mi gurih pedas
+ORD-10170,2026-08-14,Dimas Putra,+6289797868497,KD001,Kopi Pagi 200g,5,28000,140000,orders_july.csv,171,Kopi Pagi 200g
+ORD-10171,2026-07-28,Eka Saputra,+6288563715379,KD001,Kopi Pagi 200g,7,28000,196000,orders_july.csv,172,Kopi Pagi 200g
+ORD-10173,2026-07-24,Kiki Rahma,+6289224256547,KRC10,Keripik Renyah Cabe 100g,5,11000,55000,orders_july.csv,174,Keripik Renyah Cabe 100g
+ORD-10174,2026-08-28,Galih Saputra,,WG110,Wafer Gembira 110g,3,9500,28500,orders_july.csv,175,wafer gembira 110g
+ORD-10175,2026-07-28,Maya Hidayat,+6289333454692,WG110,Wafer Gembira 110g,1,9500,9500,orders_july.csv,176,Wafer Gembira 110g
+ORD-10176,2026-07-16,Vina Utami,+6287012206757,DSP45,Deterjen Segar Pagi 450g,5,15500,77500,orders_july.csv,177,DETERJEN SEGAR PAGI 450G
+ORD-10177,2026-07-05,Farah Utami,+6284090888037,WG110,Wafer Gembira 110g,5,9500,47500,orders_july.csv,178,Produk Misterius
+ORD-10178,2026-07-22,Jihan Rahma,,TS025,Teh Senja 25 Sachet,3,17000,51000,orders_july.csv,179,Teh Senja 25s
+ORD-10179,2026-08-19,Maya Rahma,+6287149371285,KRC10,Keripik Renyah Cabe 100g,3,11000,33000,orders_july.csv,180,Keripik Renyah Cabe 100g
+ORD-10180,2026-07-05,Galih Lestari,+6288269125082,SKR80,Susu Kotak Rasa 180ml,4,7000,28000,orders_july.csv,181,Susu Kotak Rasa 180ml
+ORD-10181,2026-08-01,Raka Putra,+6289678092606,MGA01,Mi Gurih Ayam,5,3500,17500,orders_july.csv,182,Mi Gurih Ayam
+ORD-10183,2026-08-14,Oki Putra,+6282651842287,SPC25,Sereal Pagi Ceria 250g,3,24000,72000,orders_july.csv,184,Sereal Pagi Ceria 250g
+ORD-10184,2026-07-13,Oki Hidayat,+6281619852350,KRC10,Keripik Renyah Cabe 100g,2,11000,22000,orders_july.csv,185,KERIPIK RENYAH CABE 100G
+ORD-10185,2026-07-11,Citra Santoso,+6283314902679,SPC25,Sereal Pagi Ceria 250g,6,24000,144000,orders_july.csv,186,Sereal Pagi Ceria 250g
+ORD-10187,2026-07-21,Nanda Pratama,+6281501868508,SPC25,Sereal Pagi Ceria 250g,1,24000,24000,orders_july.csv,188,Sereal Pagi Ceria 250g
+ORD-10190,2026-08-26,Dimas Putra,+6282248885684,SPC25,Sereal Pagi Ceria 250g,6,24000,144000,orders_july.csv,191,Sereal Pagi Ceria 250g
+ORD-10191,2026-07-16,Farah Hidayat,+6280077270883,MGA01,Mi Gurih Ayam,3,3500,10500,orders_july.csv,192,MI GURIH AYAM
+ORD-10193,2026-07-10,Sari Nugroho,+6285034077924,TS025,Teh Senja 25 Sachet,7,17000,119000,orders_july.csv,194,Teh Senja 25 Sachet
+ORD-10194,2026-08-24,Dimas Saputra,+6287360116001,MGP01,Mi Gurih Pedas,2,3800,7600,orders_july.csv,195,Mi Gurih Pedas
+ORD-10196,2026-08-19,Maya Nugroho,+6285279900677,BR120,Biskuit Rimba 120g,2,12000,24000,orders_july.csv,197,Biskuit   Rimba   120g
+ORD-10197,2026-07-25,Indra Pratama,+6289049287983,KD001,Kopi Pagi 200g,5,28000,140000,orders_july.csv,198,Kopi Pagi 200g
+ORD-10198,2026-07-10,Ayu Nugroho,+6286835771800,KRC10,Keripik Renyah Cabe 100g,7,11000,77000,orders_july.csv,199,Keripik Renyah Cabe 100g
+ORD-10200,2026-08-02,Eka Pratama,+6284352628981,WG110,Wafer Gembira 110g,8,9500,76000,orders_july.csv,201,WAFER GEMBIRA 110G
+ORD-10202,2026-07-22,Farah Lestari,+6289049075770,KD001,Kopi Pagi 200g,1,28000,28000,orders_july.csv,203,Kopi Pagi 200g
+ORD-10203,2026-07-22,Citra Santoso,+6283343965697,MDD1L,Minyak Dapur Desa 1L,4,19000,76000,orders_july.csv,204,Minyak Dapur Desa 1L
+ORD-10204,2026-07-19,Vina Putra,+6287740872558,DSP45,Deterjen Segar Pagi 450g,6,15500,93000,orders_july.csv,205,DETERJEN SEGAR PAGI 450G
+ORD-10205,2026-08-24,Bima Wulandari,+6287196366767,WG110,Wafer Gembira 110g,4,9500,38000,orders_july.csv,206,Wafer Gembira
+ORD-10207,2026-07-06,Tio Santoso,+6281385308395,KD001,Kopi Pagi 200g,6,28000,168000,orders_july.csv,208,Kopi Pagi 200g
+ORD-10208,2026-07-26,Tio Putra,+6288695539176,BR120,Biskuit Rimba 120g,5,12000,60000,orders_july.csv,209,BISKUIT RIMBA 120G
+ORD-10209,2026-08-03,Jihan Saputra,+6288310757486,DSP45,Deterjen Segar Pagi 450g,4,15500,62000,orders_july.csv,210,DETERJEN SEGAR PAGI 450G
+ORD-10211,2026-07-22,Farah Wulandari,+6283548231090,KD001,Kopi Pagi 200g,1,28000,28000,orders_july.csv,212,Kopi Pagi 200g
+ORD-10212,2026-07-14,Bima Nugroho,+6285311136399,SPC25,Sereal Pagi Ceria 250g,6,24000,144000,orders_july.csv,213,Sereal Pagi Ceria 250g
+ORD-10213,2026-07-07,Oki Pratama,+6284172454037,MGP01,Mi Gurih Pedas,6,3800,22800,orders_july.csv,214,Mi Gurih Pedas
+ORD-10214,2026-08-17,Galih Wulandari,+6284774239565,MGA01,Mi Gurih Ayam,5,3500,17500,orders_july.csv,215,Mi Gurih Ayam
+ORD-10216,2026-07-25,Laras Rahma,+6288509371008,DSP45,Deterjen Segar Pagi 450g,7,15500,108500,orders_august.csv,2,Deterjen Segar Pagi 450g
+ORD-10217,2026-07-09,Galih Saputra,+6282100972718,SPC25,Sereal Pagi Ceria 250g,4,24000,96000,orders_august.csv,3,Sereal   Pagi   Ceria   250g
+ORD-10218,2026-07-30,Jihan Santoso,+6282067037259,SPC25,Sereal Pagi Ceria 250g,6,24000,144000,orders_august.csv,4,Sereal Pagi Ceria 250g
+ORD-10219,2026-07-24,Maya Saputra,+6288522821674,MGP01,Mi Gurih Pedas,5,3800,19000,orders_august.csv,5,Mi Gurih Pedas
+ORD-10221,2026-07-25,Eka Utami,+6286610032652,DSP45,Deterjen Segar Pagi 450g,2,15500,31000,orders_august.csv,7,sabun
+ORD-10222,2026-08-29,Citra Utami,,MDD1L,Minyak Dapur Desa 1L,5,19000,95000,orders_august.csv,8,minyak dapur desa 1l
+ORD-10223,2026-07-25,Raka Saputra,+6286701224647,SPC25,Sereal Pagi Ceria 250g,2,24000,48000,orders_august.csv,9,Sereal Pagi Ceria 250g
+ORD-10224,2026-08-27,Oki Lestari,+6286884308929,DSP45,Deterjen Segar Pagi 450g,8,15500,124000,orders_august.csv,10,Deterjen Segar Pagi 450g
+ORD-10225,2026-07-05,Bima Hidayat,+6287547559671,MDD1L,Minyak Dapur Desa 1L,4,19000,76000,orders_august.csv,11,Minyak   Dapur   Desa   1L
+ORD-10226,2026-07-27,Kiki Rahma,+6288724557572,BR120,Biskuit Rimba 120g,8,12000,96000,orders_august.csv,12,Biskuit   Rimba   120g
+ORD-10228,2026-07-16,Indra Hidayat,+6287409038468,SPC25,Sereal Pagi Ceria 250g,1,24000,24000,orders_august.csv,14,Produk Misterius
+ORD-10229,2026-07-17,Putri Santoso,+6288126199815,DSP45,Deterjen Segar Pagi 450g,4,15500,62000,orders_august.csv,15,Deterjen Segar Pagi 450g
+ORD-10230,2026-08-21,Nanda Rahma,+6288149113410,MDD1L,Minyak Dapur Desa 1L,1,19000,19000,orders_august.csv,16,Minyak Dapur Desa 1L
+ORD-10231,2026-08-06,Nanda Rahma,+6287794225280,KD001,Kopi Pagi 200g,1,28000,28000,orders_august.csv,17,Kopi Pagi 200g
+ORD-10232,2026-08-14,Oki Santoso,+6289501468185,SH080,Sabun Harum 80g,1,6500,6500,orders_august.csv,18,Sabun Harum 80g
+ORD-10233,2026-08-30,Laras Nugroho,+6289231746973,SPC25,Sereal Pagi Ceria 250g,6,24000,144000,orders_august.csv,19,Sereal Pagi Ceria 250g
+ORD-10234,2026-08-30,Eka Saputra,+6283447028209,SH080,Sabun Harum 80g,6,6500,39000,orders_august.csv,20,Sabun Harum 80g
+ORD-10235,2026-08-19,Citra Saputra,+6280523318531,TS025,Teh Senja 25 Sachet,4,17000,68000,orders_august.csv,21,Teh Senja 25 Sachet
+ORD-10236,2026-07-10,Putri Utami,+6289089495749,MGP01,Mi Gurih Pedas,4,3800,15200,orders_august.csv,22,Produk Misterius
+ORD-10237,2026-08-23,Kiki Utami,+6287848244021,SH080,Sabun Harum 80g,5,6500,32500,orders_august.csv,23,Sabun Harum 80g
+ORD-10238,2026-08-02,Kiki Putra,+6282223056428,SPC25,Sereal Pagi Ceria 250g,7,24000,168000,orders_august.csv,24,sereal pagi ceria 250g
+ORD-10241,2026-08-27,Indra Rahma,+6281845814193,MDD1L,Minyak Dapur Desa 1L,6,19000,114000,orders_august.csv,27,Minyak Dapur Desa 1L
+ORD-10242,2026-08-21,Galih Nugroho,+6285296291155,SKR80,Susu Kotak Rasa 180ml,7,7000,49000,orders_august.csv,28,Susu Kotak Rasa 180ml
+ORD-10243,2026-07-11,Putri Santoso,+6289422329640,SKR80,Susu Kotak Rasa 180ml,2,7000,14000,orders_august.csv,29,Susu Kotak Rasa 180ml
+ORD-10244,2026-08-29,Farah Hidayat,+6285536167478,DSP45,Deterjen Segar Pagi 450g,8,15500,124000,orders_august.csv,30,Deterjen Segar Pagi 450g
+ORD-10245,2026-07-28,Tio Pratama,+6287679972767,SH080,Sabun Harum 80g,5,6500,32500,orders_august.csv,31,Sabun   Harum   80g
+ORD-10248,2026-08-20,Ayu Lestari,+6287559958747,MGA01,Mi Gurih Ayam,6,3500,21000,orders_august.csv,34,mi gurih ayam
+ORD-10249,2026-08-04,Maya Lestari,+6285221623589,WG110,Wafer Gembira 110g,4,9500,38000,orders_august.csv,35,Wafer   Gembira   110g
+ORD-10251,2026-08-26,Oki Utami,+6284159917689,DSP45,Deterjen Segar Pagi 450g,2,15500,31000,orders_august.csv,37,Deterjen Segar Pagi 450g
+ORD-10253,2026-07-20,Oki Hidayat,+6282541040628,TS025,Teh Senja 25 Sachet,1,17000,17000,orders_august.csv,39,Teh   Senja   25   Sachet
+ORD-10255,2026-08-19,Bima Utami,+6281832030980,WG110,Wafer Gembira 110g,1,9500,9500,orders_august.csv,41,Wafer Gembira 110g
+ORD-10256,2026-08-27,Dimas Wulandari,+6286824348946,SPC25,Sereal Pagi Ceria 250g,1,24000,24000,orders_august.csv,42,SEREAL PAGI CERIA 250G
+ORD-10258,2026-07-02,Oki Wulandari,+6282643043421,BR120,Biskuit Rimba 120g,1,12000,12000,orders_august.csv,44,Biskuit Rimba 120g
+ORD-10260,2026-07-08,Raka Santoso,,SPC25,Sereal Pagi Ceria 250g,7,24000,168000,orders_august.csv,46,sereal pagi ceria 250g
+ORD-10261,2026-07-31,Citra Putra,+6289520152961,DSP45,Deterjen Segar Pagi 450g,3,15500,46500,orders_august.csv,47,DETERJEN SEGAR PAGI 450G
+ORD-10262,2026-07-09,Nanda Putra,+6280679621394,MDD1L,Minyak Dapur Desa 1L,2,19000,38000,orders_august.csv,48,Minyak Dapur Desa 1L
+ORD-10263,2026-07-27,Galih Rahma,+6288247241905,BR120,Biskuit Rimba 120g,3,12000,36000,orders_august.csv,49,Biskuit Rimba 120g
+ORD-10264,2026-07-27,Farah Pratama,+6289636478037,DSP45,Deterjen Segar Pagi 450g,7,15500,108500,orders_august.csv,50,Deterjen Segar Pagi 450g
+ORD-10265,2026-08-04,Oki Pratama,+6289423487307,KRC10,Keripik Renyah Cabe 100g,7,11000,77000,orders_august.csv,51,Keripik Renyah Cabe 100g
+ORD-10266,2026-07-21,Jihan Santoso,+6280127365336,MDD1L,Minyak Dapur Desa 1L,8,19000,152000,orders_august.csv,52,minyak dapur desa 1l
+ORD-10268,2026-08-20,Tio Nugroho,,MDD1L,Minyak Dapur Desa 1L,8,19000,152000,orders_august.csv,54,MINYAK DAPUR DESA 1L
+ORD-10270,2026-08-26,Vina Saputra,+6289329880226,KD001,Kopi Pagi 200g,2,28000,56000,orders_august.csv,56,kopi pagi 200g
+ORD-10271,2026-07-16,Maya Wulandari,+6289154382990,MDD1L,Minyak Dapur Desa 1L,3,19000,57000,orders_august.csv,57,Minyak Dapur Desa 1L
+ORD-10272,2026-08-24,Oki Wulandari,+6286278352185,SPC25,Sereal Pagi Ceria 250g,1,24000,24000,orders_august.csv,58,sereal pagi ceria 250g
+ORD-10273,2026-08-16,Dimas Lestari,+6281146182444,SH080,Sabun Harum 80g,5,6500,32500,orders_august.csv,59,sabun harum 80g
+ORD-10274,2026-08-28,Hana Hidayat,+6280466195891,SH080,Sabun Harum 80g,2,6500,13000,orders_august.csv,60,Sabun Harum 80g
+ORD-10275,2026-08-07,Maya Putra,,TS025,Teh Senja 25 Sachet,3,17000,51000,orders_august.csv,61,TEH SENJA 25 SACHET
+ORD-10277,2026-07-07,Eka Santoso,+6280493813932,SPC25,Sereal Pagi Ceria 250g,7,24000,168000,orders_august.csv,63,Sereal   Pagi   Ceria   250g
+ORD-10279,2026-08-14,Raka Nugroho,+6289971665206,SH080,Sabun Harum 80g,8,6500,52000,orders_august.csv,65,sabun harum 80g
+ORD-10280,2026-07-28,Indra Nugroho,,DSP45,Deterjen Segar Pagi 450g,7,15500,108500,orders_august.csv,66,Deterjen Segar Pagi 450g
+ORD-10281,2026-07-19,Sari Rahma,+6280735540284,WG110,Wafer Gembira 110g,6,9500,57000,orders_august.csv,67,Wafer Gembira 110g
+ORD-10283,2026-07-03,Vina Pratama,+6286729329426,SH080,Sabun Harum 80g,5,6500,32500,orders_august.csv,69,Sabun Harum 80g
+ORD-10286,2026-07-12,Nanda Lestari,+6283977979212,BR120,Biskuit Rimba 120g,1,12000,12000,orders_august.csv,72,Biskuit Rimba 120g
+ORD-10287,2026-08-19,Tio Nugroho,+6282882118805,SKR80,Susu Kotak Rasa 180ml,6,7000,42000,orders_august.csv,73,Susu Kotak Rasa 180ml
+ORD-10289,2026-07-05,Oki Saputra,+6282927786063,DSP45,Deterjen Segar Pagi 450g,4,15500,62000,orders_august.csv,75,DETERJEN SEGAR PAGI 450G
+ORD-10292,2026-08-29,Indra Nugroho,+6287468058487,SKR80,Susu Kotak Rasa 180ml,1,7000,7000,orders_august.csv,78,Susu Kotak Rasa 180ml
+ORD-10293,2026-08-27,Farah Hidayat,+6287442472264,MGA01,Mi Gurih Ayam,7,3500,24500,orders_august.csv,79,Mi Gurih Ayam
+ORD-10295,2026-07-04,Maya Nugroho,+6289707127684,MDD1L,Minyak Dapur Desa 1L,5,19000,95000,orders_august.csv,81,Minyak Dapur Desa 1L
+ORD-10296,2026-07-27,Jihan Santoso,,MGA01,Mi Gurih Ayam,6,3500,21000,orders_august.csv,82,Mi Gurih Ayam
+ORD-10297,2026-08-02,Raka Nugroho,+6285743412049,MDD1L,Minyak Dapur Desa 1L,7,19000,133000,orders_august.csv,83,Minyak   Dapur   Desa   1L
+ORD-10300,2026-07-25,Oki Hidayat,+6281438581301,KD001,Kopi Pagi 200g,2,28000,56000,orders_august.csv,86,KOPI PAGI 200G
+ORD-10301,2026-08-07,Raka Santoso,+6283872573658,TS025,Teh Senja 25 Sachet,2,17000,34000,orders_august.csv,87,Teh Senja 25 Sachet
+ORD-10302,2026-07-05,Citra Lestari,+6287148531615,MGP01,Mi Gurih Pedas,7,3800,26600,orders_august.csv,88,Mie Gurih Pedas
+ORD-10303,2026-08-02,Tio Pratama,+6284724323949,MDD1L,Minyak Dapur Desa 1L,6,19000,114000,orders_august.csv,89,Minyak Dapur Desa 1L
+ORD-10304,2026-08-28,Jihan Utami,+6282069543104,MGA01,Mi Gurih Ayam,2,3500,7000,orders_august.csv,90,Mi Gurih Ayam
+ORD-10306,2026-07-10,Farah Wulandari,,MGP01,Mi Gurih Pedas,7,3800,26600,orders_august.csv,92,Produk Misterius
+ORD-10308,2026-07-31,Jihan Hidayat,,TS025,Teh Senja 25 Sachet,8,17000,136000,orders_august.csv,94,Teh Senja 25 Sachet
+ORD-10310,2026-08-26,Oki Nugroho,+6282060698146,KRC10,Keripik Renyah Cabe 100g,5,11000,55000,orders_august.csv,96,Keripik Renyah Cabe 100g
+ORD-10311,2026-07-05,Kiki Saputra,+6282789320995,MDD1L,Minyak Dapur Desa 1L,8,19000,152000,orders_august.csv,97,Minyak Dapur Desa 1L
+ORD-10312,2026-07-15,Jihan Hidayat,+6287997360206,SPC25,Sereal Pagi Ceria 250g,3,24000,72000,orders_august.csv,98,Produk Misterius
+ORD-10313,2026-07-24,Citra Putra,+6280389380059,TS025,Teh Senja 25 Sachet,8,17000,136000,orders_august.csv,99,teh senja 25 sachet
+ORD-10314,2026-07-18,Galih Lestari,+6280616693819,SPC25,Sereal Pagi Ceria 250g,4,24000,96000,orders_august.csv,100,Sereal Pagi Ceria 250g
+ORD-10315,2026-08-27,Dimas Santoso,+6289502269936,SPC25,Sereal Pagi Ceria 250g,3,24000,72000,orders_august.csv,101,Sereal   Pagi   Ceria   250g
+ORD-10317,2026-08-16,Maya Saputra,+6288149282785,TS025,Teh Senja 25 Sachet,2,17000,34000,orders_august.csv,103,TEH SENJA 25 SACHET
+ORD-10318,2026-08-20,Indra Lestari,+6288580263486,MDD1L,Minyak Dapur Desa 1L,4,19000,76000,orders_august.csv,104,Minyak Dapur Desa 1L
+ORD-10319,2026-08-13,Nanda Putra,+6286010556329,MGA01,Mi Gurih Ayam,8,3500,28000,orders_august.csv,105,Mi Gurih Ayam
+ORD-10322,2026-08-09,Galih Rahma,+6283380692676,DSP45,Deterjen Segar Pagi 450g,4,15500,62000,orders_august.csv,108,DETERJEN SEGAR PAGI 450G
+ORD-10323,2026-08-17,Citra Santoso,+6281635499413,DSP45,Deterjen Segar Pagi 450g,3,15500,46500,orders_august.csv,109,Deterjen Segar Pagi 450g
+ORD-10324,2026-08-07,Citra Putra,,BR120,Biskuit Rimba 120g,6,12000,72000,orders_august.csv,110,biskuit rimba 120g
+ORD-10325,2026-07-30,Indra Putra,+6280951178658,KRC10,Keripik Renyah Cabe 100g,7,11000,77000,orders_august.csv,111,KERIPIK RENYAH CABE 100G
+ORD-10326,2026-07-23,Putri Pratama,+6281903931864,SH080,Sabun Harum 80g,5,6500,32500,orders_august.csv,112,SABUN HARUM 80G
+ORD-10327,2026-08-25,Vina Pratama,+6281267023081,TS025,Teh Senja 25 Sachet,3,17000,51000,orders_august.csv,113,Teh Senja 25 Sachet
+ORD-10328,2026-07-25,Citra Putra,,SKR80,Susu Kotak Rasa 180ml,3,7000,21000,orders_august.csv,114,susu kotak rasa 180ml
+ORD-10329,2026-07-27,Bima Saputra,+6281910327258,SPC25,Sereal Pagi Ceria 250g,1,24000,24000,orders_august.csv,115,SEREAL PAGI CERIA 250G
+ORD-10330,2026-08-22,Maya Utami,+6284194750585,BR120,Biskuit Rimba 120g,3,12000,36000,orders_august.csv,116,susu kotak
+ORD-10331,2026-08-08,Bima Putra,+6284816612707,DSP45,Deterjen Segar Pagi 450g,3,15500,46500,orders_august.csv,117,deterjen segar pagi 450g
+ORD-10332,2026-08-25,Jihan Wulandari,+6282142908516,SPC25,Sereal Pagi Ceria 250g,8,24000,192000,orders_august.csv,118,Sereal Pagi Ceria 250g
+ORD-10334,2026-08-19,Ayu Saputra,,MDD1L,Minyak Dapur Desa 1L,4,19000,76000,orders_august.csv,120,MINYAK DAPUR DESA 1L
+ORD-10335,2026-08-12,Bima Wulandari,,SH080,Sabun Harum 80g,3,6500,19500,orders_august.csv,121,Sabun Harum 80g
+ORD-10336,2026-07-22,Sari Hidayat,+6286966972490,SPC25,Sereal Pagi Ceria 250g,1,24000,24000,orders_august.csv,122,Sereal Pagi Ceria 250g
+ORD-10337,2026-07-20,Maya Santoso,+6285165292872,TS025,Teh Senja 25 Sachet,4,17000,68000,orders_august.csv,123,Teh Senja 25 Sachet
+ORD-10338,2026-08-19,Oki Saputra,,MGP01,Mi Gurih Pedas,8,3800,30400,orders_august.csv,124,Mi Gurih Pedas
+ORD-10339,2026-08-29,Oki Wulandari,+6283422321424,DSP45,Deterjen Segar Pagi 450g,5,15500,77500,orders_august.csv,125,Deterjen Segar Pagi 450g
+ORD-10340,2026-08-01,Nanda Pratama,,MGP01,Mi Gurih Pedas,3,3800,11400,orders_august.csv,126,Mi Gurih Pedas
+ORD-10341,2026-07-05,Ayu Nugroho,+6289933016898,KRC10,Keripik Renyah Cabe 100g,3,11000,33000,orders_august.csv,127,Keripik Renyah Cabe 100g
+ORD-10342,2026-08-06,Jihan Saputra,+6280745712014,SPC25,Sereal Pagi Ceria 250g,5,24000,120000,orders_august.csv,128,Sereal Pagi Ceria 250g
+ORD-10343,2026-07-13,Citra Wulandari,+6285127224920,DSP45,Deterjen Segar Pagi 450g,6,15500,93000,orders_august.csv,129,Deterjen Segar Pagi 450g
+ORD-10345,2026-07-17,Indra Saputra,+6286908566865,DSP45,Deterjen Segar Pagi 450g,8,15500,124000,orders_august.csv,131,Deterjen Segar Pagi 450g
+ORD-10347,2026-07-25,Galih Nugroho,+6281877079170,MGA01,Mi Gurih Ayam,8,3500,28000,orders_august.csv,133,mi gurih ayam
+ORD-10348,2026-07-07,Maya Wulandari,+6282342906434,MGA01,Mi Gurih Ayam,3,3500,10500,orders_august.csv,134,MI GURIH AYAM
+ORD-10349,2026-08-29,Bima Hidayat,+6284754038336,BR120,Biskuit Rimba 120g,4,12000,48000,orders_august.csv,135,Biskuit Rimba 120g
+ORD-10350,2026-08-07,Indra Hidayat,+6289549212270,DSP45,Deterjen Segar Pagi 450g,4,15500,62000,orders_august.csv,136,Deterjen Segar Pagi 450g
+ORD-10353,2026-07-15,Bima Santoso,+6287659302544,SKR80,Susu Kotak Rasa 180ml,2,7000,14000,orders_august.csv,139,Susu Kotak Rasa 180ml
+ORD-10355,2026-08-13,Hana Lestari,+6287994976525,MGA01,Mi Gurih Ayam,5,3500,17500,orders_august.csv,141,Mi Gurih Ayam
+ORD-10356,2026-08-25,Bima Pratama,+6286642815661,WG110,Wafer Gembira 110g,7,9500,66500,orders_august.csv,142,wafer gembira 110g
+ORD-10357,2026-08-14,Ayu Putra,+6289258495242,DSP45,Deterjen Segar Pagi 450g,3,15500,46500,orders_august.csv,143,Deterjen Segar Pagi 450g
+ORD-10358,2026-07-13,Citra Wulandari,+6282310801493,KD001,Kopi Pagi 200g,2,28000,56000,orders_august.csv,144,Kopi Pagi 200g
+ORD-10359,2026-08-30,Putri Putra,+6282858019550,BR120,Biskuit Rimba 120g,1,12000,12000,orders_august.csv,145,biskuit rimba 120g
+ORD-10360,2026-07-02,Bima Hidayat,+6283301832777,SH080,Sabun Harum 80g,2,6500,13000,orders_august.csv,146,Sabun Harum 80g
+ORD-10361,2026-08-11,Raka Hidayat,+6280496197270,MDD1L,Minyak Dapur Desa 1L,6,19000,114000,orders_august.csv,147,Minyak Dapur Desa 1L
+ORD-10363,2026-08-30,Oki Saputra,+6282526668719,SKR80,Susu Kotak Rasa 180ml,6,7000,42000,orders_august.csv,149,Susu Kotak Rasa 180ml
+ORD-10365,2026-07-28,Bima Nugroho,,MGP01,Mi Gurih Pedas,3,3800,11400,orders_august.csv,151,Mi Gurih Pedas
+ORD-10366,2026-07-07,Galih Utami,+6282782785422,WG110,Wafer Gembira 110g,7,9500,66500,orders_august.csv,152,wafer gembira 110g
+ORD-10367,2026-08-15,Maya Saputra,+6280304076911,MGA01,Mi Gurih Ayam,6,3500,21000,orders_august.csv,153,Mie Gurih Ayam
+ORD-10368,2026-07-16,Citra Santoso,+6280631430368,DSP45,Deterjen Segar Pagi 450g,5,15500,77500,orders_august.csv,154,Deterjen Segar Pagi 450g
+ORD-10369,2026-07-16,Galih Rahma,+6280056518383,SPC25,Sereal Pagi Ceria 250g,6,24000,144000,orders_august.csv,155,Sereal Pagi Ceria 250g
+ORD-10370,2026-08-01,Galih Putra,+6287783156301,KRC10,Keripik Renyah Cabe 100g,1,11000,11000,orders_august.csv,156,KERIPIK RENYAH CABE 100G
+ORD-10371,2026-08-27,Bima Hidayat,+6286618811556,KRC10,Keripik Renyah Cabe 100g,4,11000,44000,orders_august.csv,157,Keripik   Renyah   Cabe   100g
+ORD-10372,2026-07-30,Galih Hidayat,+6285544519481,MDD1L,Minyak Dapur Desa 1L,2,19000,38000,orders_august.csv,158,minyak dapur desa 1l
+ORD-10373,2026-07-30,Jihan Putra,+6283238591597,TS025,Teh Senja 25 Sachet,6,17000,102000,orders_august.csv,159,Teh Senja 25 Sachet
+ORD-10374,2026-08-30,Maya Utami,+6282092939828,WG110,Wafer Gembira 110g,4,9500,38000,orders_august.csv,160,Wafer   Gembira   110g
+ORD-10375,2026-07-26,Farah Putra,+6281931606722,BR120,Biskuit Rimba 120g,5,12000,60000,orders_august.csv,161,Biskuit Rimba 120g
+ORD-10376,2026-08-05,Jihan Rahma,+6283915503544,MGP01,Mi Gurih Pedas,5,3800,19000,orders_august.csv,162,Mi Gurih Pedas
+ORD-10378,2026-08-03,Jihan Saputra,+6282335566379,DSP45,Deterjen Segar Pagi 450g,5,15500,77500,orders_august.csv,164,Deterjen   Segar   Pagi   450g
+ORD-10379,2026-08-19,Ayu Utami,+6287876399684,DSP45,Deterjen Segar Pagi 450g,4,15500,62000,orders_august.csv,165,Deterjen Segar Pagi 450g
+ORD-10380,2026-08-12,Maya Putra,+6285451295507,MGA01,Mi Gurih Ayam,2,3500,7000,orders_august.csv,166,Mi Gurih Ayam
+ORD-10382,2026-08-08,Citra Lestari,,WG110,Wafer Gembira 110g,6,9500,57000,orders_august.csv,168,Wafer   Gembira   110g
+ORD-10384,2026-08-02,Putri Utami,,SKR80,Susu Kotak Rasa 180ml,4,7000,28000,orders_august.csv,170,Susu Kotak Rasa 180ml
+ORD-10385,2026-07-28,Eka Wulandari,+6280304737221,MGP01,Mi Gurih Pedas,5,3800,19000,orders_august.csv,171,mi gurih pedas
+ORD-10386,2026-08-07,Indra Putra,+6280542372159,DSP45,Deterjen Segar Pagi 450g,5,15500,77500,orders_august.csv,172,Deterjen   Segar   Pagi   450g
+ORD-10387,2026-07-27,Maya Rahma,+6287265361232,SH080,Sabun Harum 80g,8,6500,52000,orders_august.csv,173,Sabun Harum 80g
+ORD-10388,2026-07-22,Bima Lestari,+6287808007473,MGA01,Mi Gurih Ayam,1,3500,3500,orders_august.csv,174,mi gurih ayam
+ORD-10390,2026-08-24,Hana Nugroho,+6285632760663,KD001,Kopi Pagi 200g,5,28000,140000,orders_august.csv,176,Kopi Pagi 200g
+ORD-10392,2026-08-02,Laras Saputra,,WG110,Wafer Gembira 110g,5,9500,47500,orders_august.csv,178,Wafer Gembira 110g
+ORD-10393,2026-08-28,Bima Rahma,+6286030090221,SKR80,Susu Kotak Rasa 180ml,8,7000,56000,orders_august.csv,179,Susu Kotak Rasa 180ml
+ORD-10395,2026-07-15,Bima Utami,+6287612400221,KD001,Kopi Pagi 200g,8,28000,224000,orders_august.csv,181,Kopi Pagi 200g
+ORD-10396,2026-07-13,Citra Wulandari,+6288610688045,MGP01,Mi Gurih Pedas,5,3800,19000,orders_august.csv,182,Mi Gurih Pedas
+ORD-10397,2026-08-03,Eka Lestari,+6288304035719,BR120,Biskuit Rimba 120g,5,12000,60000,orders_august.csv,183,biskuit rimba 120g
+ORD-10399,2026-08-04,Tio Putra,+6286421097216,MGP01,Mi Gurih Pedas,2,3800,7600,orders_august.csv,185,Mi Gurih Pedas
+ORD-10400,2026-08-19,Ayu Lestari,+6281393646791,TS025,Teh Senja 25 Sachet,1,17000,17000,orders_august.csv,186,Teh Senja 25 Sachet
+ORD-10401,2026-07-02,Maya Nugroho,+6282876821402,MDD1L,Minyak Dapur Desa 1L,5,19000,95000,orders_august.csv,187,Minyak Dapur Desa 1L
+ORD-10402,2026-07-21,Sari Nugroho,+6288803849070,KRC10,Keripik Renyah Cabe 100g,4,11000,44000,orders_august.csv,188,Keripik Renyah Cabe 100g
+ORD-10403,2026-08-08,Indra Pratama,+6289041060167,TS025,Teh Senja 25 Sachet,2,17000,34000,orders_august.csv,189,Teh Senja 25s
+ORD-10404,2026-07-28,Indra Wulandari,+6289985522955,KRC10,Keripik Renyah Cabe 100g,2,11000,22000,orders_august.csv,190,Keripik Renyah Cabe 100g
+ORD-10406,2026-07-09,Bima Pratama,+6286423969918,MGA01,Mi Gurih Ayam,8,3500,28000,orders_august.csv,192,Mi Gurih Ayam
+ORD-10407,2026-08-22,Hana Rahma,+6287806729139,WG110,Wafer Gembira 110g,4,9500,38000,orders_august.csv,193,WAFER GEMBIRA 110G
+ORD-10408,2026-07-29,Eka Putra,+6280915602592,MGA01,Mi Gurih Ayam,2,3500,7000,orders_august.csv,194,Mi Gurih Ayam
+ORD-10409,2026-08-03,Vina Nugroho,+6284299832416,DSP45,Deterjen Segar Pagi 450g,8,15500,124000,orders_august.csv,195,Deterjen Segar Pagi 450g
+ORD-10410,2026-07-08,Kiki Rahma,+6286148256049,TS025,Teh Senja 25 Sachet,3,17000,51000,orders_august.csv,196,teh senja 25 sachet
+ORD-10411,2026-08-23,Sari Pratama,+6287265518869,MGP01,Mi Gurih Pedas,3,3800,11400,orders_august.csv,197,Mie Gurih Pedas
+ORD-10412,2026-07-28,Ayu Lestari,+6288827337418,KRC10,Keripik Renyah Cabe 100g,4,11000,44000,orders_august.csv,198,KERIPIK RENYAH CABE 100G
+ORD-10413,2026-08-13,Bima Putra,+6281758567552,SKR80,Susu Kotak Rasa 180ml,2,7000,14000,orders_august.csv,199,Susu Kotak Rasa 180ml
+ORD-10414,2026-08-26,Tio Saputra,+6280004095421,KD001,Kopi Pagi 200g,8,28000,224000,orders_august.csv,200,Kopi Pagi 200g
+ORD-10415,2026-07-07,Dimas Saputra,+6280248807293,SH080,Sabun Harum 80g,4,6500,26000,orders_august.csv,201,Sabun Harum 80g
+ORD-10416,2026-08-11,Sari Saputra,+6286120053136,TS025,Teh Senja 25 Sachet,1,17000,17000,orders_august.csv,202,Teh Senja 25 Sachet
+ORD-10418,2026-07-10,Eka Santoso,+6289330873883,BR120,Biskuit Rimba 120g,7,12000,84000,orders_august.csv,204,biskuit rimba 120g
+ORD-10419,2026-07-03,Eka Lestari,,SH080,Sabun Harum 80g,8,6500,52000,orders_august.csv,205,Sabun Harum 80g
+ORD-10420,2026-07-21,Bima Saputra,+6285890023324,WG110,Wafer Gembira 110g,5,9500,47500,orders_august.csv,206,WAFER GEMBIRA 110G
+ORD-10421,2026-07-18,Jihan Rahma,+6280139215523,KD001,Kopi Pagi 200g,8,28000,224000,orders_august.csv,207,kopi pagi 200g
+ORD-10422,2026-08-30,Dimas Nugroho,+6282434727609,WG110,Wafer Gembira 110g,6,9500,57000,orders_august.csv,208,Wafer Gembira 110g
+ORD-10423,2026-07-12,Farah Rahma,+6284506361320,MGA01,Mi Gurih Ayam,4,3500,14000,orders_august.csv,209,Mi Gurih Ayam
+ORD-10425,2026-07-06,Maya Nugroho,+6280399133141,DSP45,Deterjen Segar Pagi 450g,4,15500,62000,orders_august.csv,211,DETERJEN SEGAR PAGI 450G
+ORD-10426,2026-08-14,Sari Putra,+6286001019893,MGA01,Mi Gurih Ayam,6,3500,21000,orders_august.csv,212,mi gurih ayam
+ORD-10427,2026-07-10,Raka Santoso,,MGA01,Mi Gurih Ayam,1,3500,3500,orders_august.csv,213,Mi Gurih Ayam
+ORD-10428,2026-08-24,Maya Lestari,,KRC10,Keripik Renyah Cabe 100g,6,11000,66000,orders_august.csv,214,KERIPIK RENYAH CABE 100G
+ORD-10429,2026-08-11,Kiki Putra,+6286714566835,MGP01,Mi Gurih Pedas,1,3800,3800,orders_august.csv,215,Mi Gurih Pedas
+ORD-10432,2026-07-10,Ayu Hidayat,+6285413176620,MGA01,Mi Gurih Ayam,2,3500,7000,orders_august.csv,236,Mi   Gurih   Ayam
+ORD-10433,2026-08-26,Dimas Putra,+6282248885684,SPC25,Sereal Pagi Ceria 250g,6,24000,144000,orders_august.csv,237,Sereal Pagi Ceria 250g
+ORD-10434,2026-07-22,Jihan Rahma,,TS025,Teh Senja 25 Sachet,3,17000,51000,orders_august.csv,238,Teh Senja 25s
+ORD-10437,2026-08-15,Laras Lestari,+6288034069311,KRC10,Keripik Renyah Cabe 100g,1,11000,11000,orders_august.csv,241,Keripik   Renyah   Cabe   100g
+ORD-10438,2026-07-13,Citra Wulandari,+6285127224920,DSP45,Deterjen Segar Pagi 450g,6,15500,93000,orders_august.csv,242,Deterjen Segar Pagi 450g
+ORD-10439,2026-08-06,Nanda Rahma,+6287794225280,KD001,Kopi Pagi 200g,1,28000,28000,orders_august.csv,243,Kopi Pagi 200g

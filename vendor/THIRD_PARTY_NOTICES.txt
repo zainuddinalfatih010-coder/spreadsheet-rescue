@@ -1,0 +1,13 @@
+THIRD-PARTY RUNTIME DEPENDENCIES
+
+SheetJS Community Edition 0.20.3
+Source: https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js
+Project/docs: https://docs.sheetjs.com/
+License: Apache-2.0
+
+qrcodejs 1.0.0
+Source: https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js
+Project: https://github.com/davidshimjs/qrcodejs
+License: MIT
+
+These files are vendored for runtime stability. See upstream projects for license text and notices.
