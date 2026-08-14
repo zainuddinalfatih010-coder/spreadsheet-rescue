@@ -19,6 +19,10 @@ The repository includes `.github/workflows/pages.yml`. Pushes to `main` publish 
 
 The first deployment may require the repository owner's GitHub Pages permission/settings. Do not claim the URL is live until the Actions run and hosted smoke test succeed.
 
+## Current hosted status
+
+The first Pages workflow run after the final push reached GitHub Actions but failed at `Configure Pages`; the repository Pages API still returns 404 and the expected URL returns 404. This is a repository setting/permission gate, not an application build failure. Enable Pages with **Settings -> Pages -> Source: GitHub Actions**, then rerun the workflow.
+
 ## Hosted smoke test
 
 - boot with no JavaScript errors;
