@@ -23,12 +23,52 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Materialize PROJECT-3-TIK game HTML
+        shell: bash
+        run: |
+          set -euo pipefail
+          src='https://project-3-tik-gptacece2-4164s-projects.vercel.app/'
+          mkdir -p PROJECT-3-TIK
+          curl -fL --retry 5 --retry-all-errors --connect-timeout 15 --max-time 120 "$src" -o PROJECT-3-TIK/index.html
+          bytes=$(wc -c < PROJECT-3-TIK/index.html)
+          echo "Downloaded bytes: $bytes"
+          test "$bytes" -gt 400000
+          grep -q "v1.2-mega-2026-08-16" PROJECT-3-TIK/index.html
+          grep -q "<canvas" PROJECT-3-TIK/index.html
+          if grep -qi "vercel.*authentication\|log in to vercel\|sign in to vercel" PROJECT-3-TIK/index.html; then
+            echo 'Vercel authentication page detected, refusing to publish.' >&2
+            exit 1
+          fi
+          rm -f PROJECT-3-TIK/game.gz.b64
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
+
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
+
       - name: Deploy to Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Public smoke test
+        shell: bash
+        run: |
+          set -euo pipefail
+          url='${{ steps.deployment.outputs.page_url }}PROJECT-3-TIK/'
+          echo "Smoke testing: $url"
+          sleep 5
+          curl -fL --retry 8 --retry-all-errors --retry-delay 2 --connect-timeout 15 --max-time 120 "$url" -o /tmp/project3-live.html
+          bytes=$(wc -c < /tmp/project3-live.html)
+          echo "Live bytes: $bytes"
+          test "$bytes" -gt 400000
+          grep -q "v1.2-mega-2026-08-16" /tmp/project3-live.html
+          grep -q "<canvas" /tmp/project3-live.html
+          if grep -q "game.gz.b64" /tmp/project3-live.html; then
+            echo 'Old loader still live.' >&2
+            exit 1
+          fi
+          echo 'PROJECT-3-TIK PUBLIC_SMOKE_PASS'
