@@ -24,21 +24,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Materialize PROJECT-3-TIK direct HTML
+      - name: Fetch PROJECT-3-TIK game HTML
         shell: bash
         run: |
-          test -s PROJECT-3-TIK/game.gz.b64
-          base64 --decode PROJECT-3-TIK/game.gz.b64 | gunzip > PROJECT-3-TIK/index.html
+          mkdir -p PROJECT-3-TIK
+          curl --fail --location --retry 5 --retry-delay 2 \
+            'https://project-3-tik-gptacece2-4164s-projects.vercel.app/' \
+            --output PROJECT-3-TIK/index.html
           test -s PROJECT-3-TIK/index.html
-          if grep -qi 'vercel' PROJECT-3-TIK/index.html; then
-            echo 'Unexpected Vercel reference in materialized game HTML' >&2
-            exit 1
-          fi
+          bytes=$(wc -c < PROJECT-3-TIK/index.html)
+          echo "Fetched game HTML: ${bytes} bytes"
+          test "$bytes" -gt 300000
           if grep -qi '<iframe' PROJECT-3-TIK/index.html; then
-            echo 'Unexpected iframe in materialized game HTML' >&2
+            echo 'Unexpected iframe in fetched game HTML' >&2
             exit 1
           fi
-          echo "PROJECT-3-TIK materialized: $(wc -c < PROJECT-3-TIK/index.html) bytes"
+          grep -q '<canvas' PROJECT-3-TIK/index.html
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -51,3 +52,27 @@ jobs:
       - name: Deploy to Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Smoke test public PROJECT-3-TIK
+        shell: bash
+        run: |
+          url='${{ steps.deployment.outputs.page_url }}PROJECT-3-TIK/?smoke=${{ github.sha }}'
+          echo "Testing $url"
+          ok=0
+          for i in $(seq 1 12); do
+            code=$(curl -L -sS -o /tmp/project3-live.html -w '%{http_code}' "$url" || true)
+            bytes=$(wc -c < /tmp/project3-live.html 2>/dev/null || echo 0)
+            echo "Attempt $i: HTTP $code, ${bytes} bytes"
+            if [ "$code" = '200' ] && [ "$bytes" -gt 300000 ]; then
+              ok=1
+              break
+            fi
+            sleep 5
+          done
+          test "$ok" = '1'
+          grep -q '<canvas' /tmp/project3-live.html
+          if grep -qi '<iframe' /tmp/project3-live.html; then
+            echo 'Public page unexpectedly contains iframe' >&2
+            exit 1
+          fi
+          echo 'PUBLIC_SMOKE_PASS'
