@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#050508">
+<title>HAND//FX V7.3</title>
+<style>html,body{margin:0;height:100%;background:#050508;color:#fff;font-family:system-ui,-apple-system,Segoe UI,sans-serif}.boot{height:100dvh;display:grid;place-items:center;text-align:center;padding:26px}.box{max-width:390px}.spin{font-size:42px;animation:p 1s ease-in-out infinite alternate}@keyframes p{to{transform:scale(1.15);filter:drop-shadow(0 0 22px #ff7a18)}}small{color:#aaa}</style>
+</head>
+<body><div class="boot"><div class="box"><div class="spin">✦</div><h2>HAND//FX V7.3</h2><p>Loading robust double-clap detector…</p><small>HTTPS runtime</small></div></div>
+<script>
+(async()=>{
+try{
+  let src=await (await fetch('./v7-2.html?v=703',{cache:'no-store'})).text();
+  if(!src.includes('HAND//FX V7.2')) throw new Error('Baseline V7.2 gagal dimuat.');
+
+  const oldPalm="function clapPalmState(){if(!results?.landmarks||results.landmarks.length<2)return null;const hs=results.landmarks.slice(0,2).map(h=>{const ids=[0,5,9,13,17],ps=ids.map(i=>mapScreen(h[i])),c={x:ps.reduce((s,p)=>s+p.x,0)/ps.length,y:ps.reduce((s,p)=>s+p.y,0)/ps.length},w=Math.max(18,Math.hypot(ps[4].x-ps[1].x,ps[4].y-ps[1].y));return{c,w}});const d=Math.hypot(hs[0].c.x-hs[1].c.x,hs[0].c.y-hs[1].c.y),scale=(hs[0].w+hs[1].w)/2;return{norm:d/Math.max(18,scale)}}";
+  const newPalm="function clapPalmState(){if(!results?.landmarks||results.landmarks.length<2)return null;const hs=results.landmarks.slice(0,2).map(h=>{const ids=[0,5,9,13,17],ps=ids.map(i=>mapScreen(h[i])),c={x:ps.reduce((s,p)=>s+p.x,0)/ps.length,y:ps.reduce((s,p)=>s+p.y,0)/ps.length},w=Math.max(18,Math.hypot(ps[4].x-ps[1].x,ps[4].y-ps[1].y));return{ps,c,w}});const scale=(hs[0].w+hs[1].w)/2,center=Math.hypot(hs[0].c.x-hs[1].c.x,hs[0].c.y-hs[1].c.y);let gap=1e9;for(const a of hs[0].ps)for(const b of hs[1].ps)gap=Math.min(gap,Math.hypot(a.x-b.x,a.y-b.y));return{norm:Math.min(gap/Math.max(18,scale),center/Math.max(18,scale)*.48)}}";
+  if(!src.includes(oldPalm)) throw new Error('Clap palm detector lama tidak ditemukan.');
+  src=src.replace(oldPalm,newPalm);
+
+  const oldToggle="function updateSpellToggle(now){const st=clapPalmState();if(!st){if(spellClap.count&&now-spellClap.lastHit>1450)spellClap.count=0;return}const n=st.norm,closing=spellClap.lastNorm-n;if(!spellClap.armed&&n>1.65&&now>spellClap.coolUntil)spellClap.armed=true;if(spellClap.armed&&n<1.05&&closing>.06&&now>spellClap.coolUntil){if(now-spellClap.lastHit>1300)spellClap.count=0;spellClap.count++;spellClap.lastHit=now;spellClap.armed=false;if(spellClap.count===1)setStatus('CLAP 1/2 · tepuk sekali lagi…',true);if(spellClap.count>=2){spellClap.count=0;setSpellMode(!spellMode,now)}}spellClap.lastNorm=n}";
+  const newToggle="function updateSpellToggle(now){if(spellClap.count&&now-spellClap.lastHit>2200)spellClap.count=0;const st=clapPalmState();if(!st){if(spellClap.phase==='contact'){if(!spellClap.missingAt)spellClap.missingAt=now;if(now-spellClap.missingAt<480)return;spellClap.phase='open';spellClap.missingAt=0}return}spellClap.missingAt=0;const n=st.norm;if(!spellClap.phase)spellClap.phase='open';if(now<spellClap.coolUntil){spellClap.lastNorm=n;return}if(spellClap.phase==='open'){if(n<.84){spellClap.phase='contact';spellClap.contactAt=now;setStatus('CLAP · lepas…',true)}}else if(spellClap.phase==='contact'){if(n>1.08){const dur=now-(spellClap.contactAt||now);spellClap.phase='open';if(dur<620){if(now-spellClap.lastHit>2200)spellClap.count=0;spellClap.count++;spellClap.lastHit=now;if(spellClap.count===1)setStatus('CLAP 1/2 · sekali lagi…',true);if(spellClap.count>=2){spellClap.count=0;setSpellMode(!spellMode,now)}}}}spellClap.lastNorm=n}";
+  if(!src.includes(oldToggle)) throw new Error('Clap toggle lama tidak ditemukan.');
+  src=src.replace(oldToggle,newToggle);
+
+  src=src.replaceAll('HAND//FX V7.2','HAND//FX V7.3')
+         .replaceAll('double-clap spell-only mode','robust double-clap spell-only mode')
+         .replaceAll('V7.2 gagal boot','V7.3 gagal boot');
+
+  document.open();document.write(src);document.close();
+}catch(e){
+  console.error(e);
+  document.body.innerHTML='<div class="boot"><div class="box"><h2>V7.3 gagal boot</h2><p>'+String(e.message||e)+'</p><small>Refresh halaman HTTPS ini.</small></div></div>';
+}
+})();
+</script>
+</body>
+</html>
