@@ -1,32 +1,13 @@
-name: Diagnose PROJECT-3-TIK source
+name: PROJECT-3-TIK payload staging
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  diagnose:
+  staging:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Inspect source build
-        shell: bash
-        run: |
-          set -euo pipefail
-          src='https://project-3-tik-gptacece2-4164s-projects.vercel.app/'
-          curl -fL --retry 5 --retry-all-errors --connect-timeout 15 --max-time 120 "$src" -o /tmp/source.html
-          echo "BYTES=$(wc -c < /tmp/source.html)"
-          echo '--- TITLE ---'
-          grep -oE '<title>[^<]*</title>' /tmp/source.html | head -5 || true
-          echo '--- VERSION TOKENS ---'
-          grep -aoE 'v1\.[0-9][A-Za-z0-9._=-]{0,80}' /tmp/source.html | sort -u | tail -50 || true
-          echo '--- HEALTH TOKENS ---'
-          grep -aoE '__[A-Z0-9_]+HEALTH' /tmp/source.html | sort -u | tail -50 || true
-          echo '--- MARKERS ---'
-          for m in '<canvas' '__V12_HEALTH' 'p12ReinforceNewSegment' 'Cross-Out' 'v1.2-mega-2026-08-16' '__V11RC1_HEALTH' 'P10.1' 'P9.3'; do
-            if grep -Fq "$m" /tmp/source.html; then echo "YES $m"; else echo "NO  $m"; fi
-          done
+      - run: echo 'Payload staging only; public deploy temporarily disabled.'
