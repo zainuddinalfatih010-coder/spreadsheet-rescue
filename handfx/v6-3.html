@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#050508">
+<title>HAND//FX V6.3 Loader</title>
+<style>
+html,body{margin:0;height:100%;background:#050508;color:#fff;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+.boot{height:100dvh;display:grid;place-items:center;text-align:center;padding:26px}.box{max-width:390px}
+.spin{font-size:42px;animation:p 1s ease-in-out infinite alternate}@keyframes p{to{transform:scale(1.15);filter:drop-shadow(0 0 20px #8cf7ff)}}
+small{color:#aaa}
+</style></head>
+<body><div class="boot"><div class="box"><div class="spin">✦</div><h2>HAND//FX V6.3</h2><p>Loading constellation, liquid holo & portal tunnel…</p><small>HTTPS runtime</small></div></div>
+<script>
+(async()=>{
+try{
+  let s=await (await fetch('./v6-2.html?v=63',{cache:'no-store'})).text();
+  if(!s.includes('HAND//FX V6.2')) throw new Error('Baseline V6.2 gagal dimuat.');
+
+  const extra=String.raw`
+    t=t.replaceAll('HAND//FX V6.2','HAND//FX V6.3');
+    t=t.replaceAll('· V6.2','· V6.3');
+    t=t.replace('3 Materials · angle color shift · proper mask','6 Materials · constellation · liquid · portal tunnel');
+    t=t.replace('Tracking V5.3 + proper mask tetap sama. Tombol FX sekarang mengganti material: Iridescent Glass, Negative Neon, dan Electric Veins.','Tracking + proper mask tetap sama. FX sekarang punya 6 mode: Iridescent, Negative, Electric, Constellation, Liquid Holo, dan Portal Tunnel.');
+
+    t=t.replace("const FX_PRESETS=[{id:'glass',label:'IRID GLASS',base:285},{id:'negative',label:'NEGATIVE',base:330},{id:'electric',label:'ELECTRIC',base:192}];",
+      "const FX_PRESETS=[{id:'glass',label:'IRID GLASS',base:285},{id:'negative',label:'NEGATIVE',base:330},{id:'electric',label:'ELECTRIC',base:192},{id:'constellation',label:'CONSTELLATION',base:222},{id:'liquid',label:'LIQUID HOLO',base:174},{id:'portal',label:'PORTAL TUNNEL',base:300}];");
+
+    const v63Code="function hash01(n){const x=Math.sin(n*127.1+311.7)*43758.5453123;return x-Math.floor(x)}\
+function currentRenderedHands(now){return trackedHands.map(h=>({h,pts:h.points.map(q=>({...q,...renderPoint(q.m,now)}))})).filter(x=>x.pts.length>=2)}\
+function clipPolyFill(poly,fn){if(!poly||poly.length<3)return;ctx.save();pathPoly(poly);ctx.clip();fn();ctx.restore()}\
+function drawConstellationReactive(now){const hue=presetHue(now);ctx.save();ctx.globalCompositeOperation='screen';for(const item of currentRenderedHands(now)){if(item.pts.length<3)continue;const poly=angleOrder(item.pts),c0=centroid(poly);clipPolyFill(poly,()=>{const stars=[];for(let i=0;i<18;i++){const a=hash01(i*13+item.pts.length*17),b=hash01(i*29+7),r=.08+.84*a,th=b*Math.PI*2;const maxR=Math.min(W,H)*(.035+.055*hash01(i*41+3));stars.push({x:c0.x+Math.cos(th)*maxR*r*3.4,y:c0.y+Math.sin(th)*maxR*r*3.4,s:.8+2.2*hash01(i*53+9),tw:.45+.55*Math.sin(now*.004+i*1.7)});}ctx.strokeStyle=\`hsla(\${hue},100%,82%,.20)\`;ctx.lineWidth=.8*fx;for(let i=0;i<stars.length;i++){let best=-1,bd=1e9;for(let j=0;j<stars.length;j++){if(i===j)continue;const d=Math.hypot(stars[i].x-stars[j].x,stars[i].y-stars[j].y);if(d<bd){bd=d;best=j}}if(best>=0&&bd<120){ctx.beginPath();ctx.moveTo(stars[i].x,stars[i].y);ctx.lineTo(stars[best].x,stars[best].y);ctx.stroke()}}for(const s0 of stars){ctx.shadowColor=\`hsla(\${(hue+s0.x*.08)%360},100%,78%,1)\`;ctx.shadowBlur=10*fx;ctx.fillStyle=\`rgba(255,255,255,\${Math.max(.2,s0.tw)})\`;ctx.beginPath();ctx.arc(s0.x,s0.y,s0.s*fx,0,Math.PI*2);ctx.fill()}})}if(faceGeom&&(maskActive||maskDismissStart)){const f=faceGeom;ctx.save();faceMaskPath(f.outline,1.04);ctx.clip();for(let i=0;i<34;i++){const x=f.minX+f.w*hash01(i*31+4),y=f.minY+f.h*hash01(i*47+8),tw=.32+.68*Math.sin(now*.004+i*1.2);ctx.shadowColor=\`hsla(\${(hue+i*9)%360},100%,74%,1)\`;ctx.shadowBlur=8*fx;ctx.fillStyle=\`rgba(255,255,255,\${Math.max(.14,tw*.78)})\`;ctx.beginPath();ctx.arc(x,y,(.7+1.6*hash01(i*61+2))*fx,0,Math.PI*2);ctx.fill()}ctx.restore()}ctx.restore()}\
+function drawLiquidReactive(now){const hue=presetHue(now);ctx.save();ctx.globalCompositeOperation='screen';for(const item of currentRenderedHands(now)){if(item.pts.length<3)continue;const poly=angleOrder(item.pts),xs=poly.map(p=>p.x),ys=poly.map(p=>p.y),minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);clipPolyFill(poly,()=>{for(let k=0;k<5;k++){const phase=now*.0022+k*1.35,yy=minY+(k+.5)*(maxY-minY)/5+Math.sin(phase)*18;const g=ctx.createLinearGradient(minX,yy,maxX,yy+30);g.addColorStop(0,\`hsla(\${(hue+k*35)%360},100%,65%,0)\`);g.addColorStop(.28,\`hsla(\${(hue+k*35)%360},100%,67%,.23)\`);g.addColorStop(.55,'rgba(255,255,255,.20)');g.addColorStop(.78,\`hsla(\${(hue+120+k*28)%360},100%,62%,.20)\`);g.addColorStop(1,'rgba(255,255,255,0)');ctx.strokeStyle=g;ctx.lineWidth=(10+4*Math.sin(phase*1.7))*fx;ctx.shadowColor=\`hsla(\${(hue+k*30)%360},100%,62%,.7)\`;ctx.shadowBlur=14*fx;ctx.beginPath();ctx.moveTo(minX-20,yy);ctx.bezierCurveTo(minX+(maxX-minX)*.28,yy+Math.sin(phase+1)*24,minX+(maxX-minX)*.68,yy+Math.cos(phase+.4)*28,maxX+20,yy+Math.sin(phase+2)*20);ctx.stroke()}for(let i=0;i<8;i++){const x=minX+(maxX-minX)*hash01(i*21+5),base=minY+(maxY-minY)*hash01(i*37+6),y=base+Math.sin(now*.003+i)*14,r=(2+5*hash01(i*49+1))*fx;ctx.fillStyle=\`hsla(\${(hue+i*22)%360},100%,82%,.18)\`;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill()}})}if(faceGeom&&(maskActive||maskDismissStart)){const f=faceGeom;ctx.save();faceMaskPath(f.outline,1.04);ctx.clip();for(let k=0;k<6;k++){const yy=f.minY+(k+.4)*f.h/6+Math.sin(now*.002+k)*f.h*.035;const g=ctx.createLinearGradient(f.minX,yy,f.maxX,yy);g.addColorStop(0,'rgba(255,255,255,0)');g.addColorStop(.35,\`hsla(\${(hue+k*30)%360},100%,70%,.18)\`);g.addColorStop(.55,'rgba(255,255,255,.22)');g.addColorStop(.8,\`hsla(\${(hue+150+k*20)%360},100%,65%,.16)\`);g.addColorStop(1,'rgba(255,255,255,0)');ctx.strokeStyle=g;ctx.lineWidth=9*fx;ctx.beginPath();ctx.moveTo(f.minX-20,yy);ctx.bezierCurveTo(f.center.x-f.w*.2,yy+Math.sin(now*.002+k)*18,f.center.x+f.w*.22,yy+Math.cos(now*.002+k)*18,f.maxX+20,yy);ctx.stroke()}ctx.restore()}ctx.restore()}\
+function handCrossSection(item,now){const pts=item.h.points.map(q=>({...q,...renderPoint(q.m,now)}));const byId=new Map(pts.map(p=>[p.id,p]));return byId}\
+function drawPortalTunnelReactive(now){const hue=presetHue(now),hs=currentRenderedHands(now);ctx.save();ctx.globalCompositeOperation='screen';if(hs.length>=2){hs.sort((a,b)=>centroid(a.pts).x-centroid(b.pts).x);const A=handCrossSection(hs[0],now),B=handCrossSection(hs[1],now),ids=[4,8,12,16,20].filter(id=>A.has(id)&&B.has(id));if(ids.length>=2){const rings=9,twist=Math.sin(now*.0016)*.18+handDepthTilt()*.22;for(let r=0;r<rings;r++){const t=r/(rings-1),ease=.5-.5*Math.cos(t*Math.PI),pts=[];for(let j=0;j<ids.length;j++){const a=A.get(ids[j]),b=B.get(ids[j]),x=a.x+(b.x-a.x)*ease,y=a.y+(b.y-a.y)*ease;const cx=(a.x+b.x)/2,cy=(a.y+b.y)/2,dx=x-cx,dy=y-cy,ang=twist*Math.sin(t*Math.PI)*((j%2)?1:-1),ca=Math.cos(ang),sa=Math.sin(ang);pts.push({x:cx+dx*ca-dy*sa,y:cy+dx*sa+dy*ca,id:ids[j]})}if(pts.length>=3){const poly=angleOrder(pts),alpha=.12+.40*Math.sin(t*Math.PI),rh=(hue+t*170+now*.012)%360;ctx.shadowColor=\`hsla(\${rh},100%,68%,1)\`;ctx.shadowBlur=(6+16*Math.sin(t*Math.PI))*fx;ctx.strokeStyle=\`hsla(\${rh},100%,75%,\${alpha})\`;ctx.lineWidth=(1.3+2.8*Math.sin(t*Math.PI))*fx;ctx.beginPath();ctx.moveTo(poly[0].x,poly[0].y);for(let i=1;i<poly.length;i++)ctx.lineTo(poly[i].x,poly[i].y);ctx.closePath();ctx.stroke();if(r>0&&r<rings-1){ctx.fillStyle=\`hsla(\${(rh+80)%360},100%,55%,\${.018+.035*Math.sin(t*Math.PI)})\`;ctx.fill()}}}for(const id of ids){const a=A.get(id),b=B.get(id);ctx.strokeStyle=\`hsla(\${(hue+id*7)%360},100%,77%,.30)\`;ctx.lineWidth=1.4*fx;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}const ca=centroid(hs[0].pts),cb=centroid(hs[1].pts),mx=(ca.x+cb.x)/2,my=(ca.y+cb.y)/2,rr=Math.min(110,Math.hypot(cb.x-ca.x,cb.y-ca.y)*.18);const g=ctx.createRadialGradient(mx,my,0,mx,my,rr);g.addColorStop(0,'rgba(0,0,0,.0)');g.addColorStop(.35,\`hsla(\${(hue+130)%360},100%,58%,.18)\`);g.addColorStop(.72,\`hsla(\${hue},100%,68%,.12)\`);g.addColorStop(1,'rgba(255,255,255,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(mx,my,rr,0,Math.PI*2);ctx.fill()}}else{drawGlassReactive(now)}ctx.restore()}\
+function drawV63Overlay(now){const id=fxPreset().id;if(id==='constellation')drawConstellationReactive(now);else if(id==='liquid')drawLiquidReactive(now);else if(id==='portal')drawPortalTunnelReactive(now)}";
+
+    t=t.replace('function drawMesh(now){',v63Code+'function drawMesh(now){');
+    t=t.replace('drawPresetOverlay(now);if(debug)drawDebug(now)}','drawPresetOverlay(now);drawV63Overlay(now);if(debug)drawDebug(now)}');
+    t=t.replace("function drawPresetOverlay(now){const id=fxPreset().id;if(id==='negative')drawNegativeReactive(now);else if(id==='electric')drawElectricReactive(now);else drawGlassReactive(now)}",
+      "function drawPresetOverlay(now){const id=fxPreset().id;if(id==='negative')drawNegativeReactive(now);else if(id==='electric')drawElectricReactive(now);else if(id==='glass')drawGlassReactive(now);else if(id==='constellation'){}else if(id==='liquid')drawGlassReactive(now);else if(id==='portal')drawGlassReactive(now)}");
+
+  `;
+
+  const marker='    document.open();document.write(t);document.close();\n  `;';
+  if(!s.includes(marker)) throw new Error('Patch point V6.2 tidak ditemukan.');
+  s=s.replace('<title>HAND//FX V6.2 Loader</title>','<title>HAND//FX V6.3 Loader</title>')
+     .replace('<h2>HAND//FX V6.2</h2>','<h2>HAND//FX V6.3</h2>')
+     .replace('Loading material + preset engine…','Loading constellation, liquid holo & portal tunnel…')
+     .replace(marker,extra+'\n'+marker);
+
+  document.open();document.write(s);document.close();
+}catch(e){
+  console.error(e);
+  document.body.innerHTML='<div class="boot"><div class="box"><h2>V6.3 gagal boot</h2><p>'+String(e.message||e)+'</p><small>Refresh halaman HTTPS ini.</small></div></div>';
+}
+})();
+</script></body></html>
