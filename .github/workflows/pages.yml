@@ -1,13 +1,53 @@
-name: PROJECT-3-TIK payload staging
+name: Deploy Spreadsheet Rescue to GitHub Pages
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
-  staging:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo 'Payload staging only; public deploy temporarily disabled.'
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Materialize PROJECT-3-TIK direct HTML
+        shell: bash
+        run: |
+          test -s PROJECT-3-TIK/game.gz.b64
+          base64 --decode PROJECT-3-TIK/game.gz.b64 | gunzip > PROJECT-3-TIK/index.html
+          test -s PROJECT-3-TIK/index.html
+          if grep -qi 'vercel' PROJECT-3-TIK/index.html; then
+            echo 'Unexpected Vercel reference in materialized game HTML' >&2
+            exit 1
+          fi
+          if grep -qi '<iframe' PROJECT-3-TIK/index.html; then
+            echo 'Unexpected iframe in materialized game HTML' >&2
+            exit 1
+          fi
+          echo "PROJECT-3-TIK materialized: $(wc -c < PROJECT-3-TIK/index.html) bytes"
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
