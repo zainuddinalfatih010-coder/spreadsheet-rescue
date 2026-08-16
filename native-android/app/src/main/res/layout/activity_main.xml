@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#050508">
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.handfx.nativefx.HandFxGLView
+        android:id="@+id/fxView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#B8050508"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="8dp"
+            android:text="HAND//FX · NATIVE ZERO-LAG LAB"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#B8050508"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="7dp"
+            android:text="Starting…"
+            android:textColor="#FFE0C2"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="28dp"
+        android:background="#B8050508"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="8dp"
+        android:text="Double clap → orange spell-only · double clap again → normal"
+        android:textColor="#FFFFFF"
+        android:textSize="11sp" />
+
+</FrameLayout>

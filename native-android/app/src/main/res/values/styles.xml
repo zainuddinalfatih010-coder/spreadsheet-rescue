@@ -1,0 +1,10 @@
+<resources>
+    <style name="Theme.HandFx" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:colorAccent">#FF7A18</item>
+        <item name="android:navigationBarColor">#050508</item>
+        <item name="android:statusBarColor">#050508</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

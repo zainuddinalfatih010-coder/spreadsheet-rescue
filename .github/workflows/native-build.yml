@@ -4,7 +4,7 @@ on:
   push:
     branches: [handfx-native]
     paths:
-      - 'native-android-source.tar.gz'
+      - 'native-android/**'
       - '.github/workflows/native-build.yml'
 
 jobs:
@@ -23,11 +23,6 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
-      - name: Extract native project
-        run: |
-          rm -rf native-android
-          mkdir -p native-android
-          tar -xzf native-android-source.tar.gz -C native-android
       - name: Download official MediaPipe hand model
         run: |
           mkdir -p native-android/app/src/main/assets
