@@ -11,3 +11,5 @@ Native Android rewrite of the HAND//FX browser prototype.
 - Face tracking intentionally absent.
 
 Current latency-lab visuals: V5.3-style fingertip polygon and double-clap orange spell-only sigil. Rich shader composer comes after real-device latency validation.
+
+CI note: native source is checked in directly so APK builds do not depend on an archive extraction step.
