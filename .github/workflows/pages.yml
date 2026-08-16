@@ -39,7 +39,8 @@ jobs:
             echo 'Unexpected iframe in fetched game HTML' >&2
             exit 1
           fi
-          grep -q '<canvas' PROJECT-3-TIK/index.html
+          grep -q '__V12' PROJECT-3-TIK/index.html
+          grep -q 'requestAnimationFrame' PROJECT-3-TIK/index.html
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -70,9 +71,14 @@ jobs:
             sleep 5
           done
           test "$ok" = '1'
-          grep -q '<canvas' /tmp/project3-live.html
+          grep -q '__V12' /tmp/project3-live.html
+          grep -q 'requestAnimationFrame' /tmp/project3-live.html
           if grep -qi '<iframe' /tmp/project3-live.html; then
             echo 'Public page unexpectedly contains iframe' >&2
+            exit 1
+          fi
+          if grep -q 'game.gz.b64' /tmp/project3-live.html; then
+            echo 'Public page unexpectedly still contains loader fetch' >&2
             exit 1
           fi
           echo 'PUBLIC_SMOKE_PASS'
