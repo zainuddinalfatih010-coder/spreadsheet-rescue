@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#050508">
+<title>HAND//FX V6.2 Loader</title>
+<style>
+html,body{margin:0;height:100%;background:#050508;color:#fff;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+.boot{height:100dvh;display:grid;place-items:center;text-align:center;padding:26px}.box{max-width:390px}
+.spin{font-size:42px;animation:p 1s ease-in-out infinite alternate}@keyframes p{to{transform:scale(1.15);filter:drop-shadow(0 0 18px #74e6ff)}}
+small{color:#aaa}
+</style></head>
+<body><div class="boot"><div class="box"><div class="spin">✦</div><h2>HAND//FX V6.2</h2><p>Loading material + preset engine…</p><small>HTTPS runtime</small></div></div>
+<script>
+(async()=>{
+try{
+  let s=await (await fetch('./v6-1.html?v=62',{cache:'no-store'})).text();
+  if(!s.includes('HAND//FX V6.1')) throw new Error('Baseline V6.1 gagal dimuat.');
+
+  const injection=String.raw`
+    t=t.replaceAll('HAND//FX V6.1','HAND//FX V6.2');
+    t=t.replaceAll('· V6.1','· V6.2');
+    t=t.replace('Proper Mask · 2-hand summon · 1-hand wipe off','3 Materials · angle color shift · proper mask');
+    t=t.replace('V5.3 hand mesh tetap dipertahankan. Dua tangan menyapu wajah untuk memanggil topeng; satu tangan usap dari atas ke bawah untuk menghapusnya.','Tracking V5.3 + proper mask tetap sama. Tombol FX sekarang mengganti material: Iridescent Glass, Negative Neon, dan Electric Veins.');
+    t=t.replace('>FX 100%</button>','>IRID GLASS</button>');
+
+    const presetCode="const FX_PRESETS=[{id:'glass',label:'IRID GLASS',base:285},{id:'negative',label:'NEGATIVE',base:330},{id:'electric',label:'ELECTRIC',base:192}];\
+let fxPresetIndex=0;\
+function fxPreset(){return FX_PRESETS[fxPresetIndex%FX_PRESETS.length]}\
+function handAngleBias(){let sum=0,n=0;if(results?.landmarks)for(const h of results.landmarks){const a=h[5],b=h[17];if(a&&b){sum+=Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI;n++}}return n?sum/n:0}\
+function handDepthTilt(){let sum=0,n=0;if(results?.landmarks)for(const h of results.landmarks){const a=h[5],b=h[17],w=h[0],m=h[9];if(a&&b&&w&&m){const scale=Math.hypot(a.x-b.x,a.y-b.y)||.1;sum+=(b.z-a.z)/scale;n++}}return n?Math.max(-1,Math.min(1,sum/n)) :0}\
+function presetHue(now){const p=fxPreset(),ang=handAngleBias(),depth=handDepthTilt();if(p.id==='negative')return (p.base+ang*.55+depth*110+now*.006+720)%360;if(p.id==='electric')return (p.base+ang*.18+depth*50+Math.sin(now*.004)*18+720)%360;return (p.base+ang*.65+depth*145+now*.022+720)%360}\
+function facePresetHue(now,f){const p=fxPreset();if(p.id==='negative')return (p.base+f.yaw*175+f.roll*75/Math.PI+now*.005+720)%360;if(p.id==='electric')return (p.base+f.yaw*80+f.roll*28/Math.PI+Math.sin(now*.004)*16+720)%360;return (p.base+f.yaw*190+f.roll*95/Math.PI+f.pitch*55+now*.010+720)%360}\
+function clipHandPoly(h,now){const pts=h.points.map(q=>({...q,...renderPoint(q.m,now)}));if(pts.length<3)return null;return angleOrder(pts)}\
+function drawGlassReactive(now){const hue=presetHue(now),ang=(handAngleBias()+360)%360,depth=Math.abs(handDepthTilt());ctx.save();ctx.globalCompositeOperation='screen';for(const h of trackedHands){const poly=clipHandPoly(h,now);if(!poly)continue;const c0=centroid(poly);pathPoly(poly);ctx.save();ctx.clip();const rad=(ang*Math.PI/180),dx=Math.cos(rad)*W,dy=Math.sin(rad)*H,g=ctx.createLinearGradient(c0.x-dx*.18,c0.y-dy*.18,c0.x+dx*.18,c0.y+dy*.18);g.addColorStop(0,'rgba(255,255,255,0)');g.addColorStop(.36,\`hsla(\${hue},100%,70%,.04)\`);g.addColorStop(.49,\`hsla(\${(hue+85)%360},100%,82%,.28)\`);g.addColorStop(.56,'rgba(255,255,255,.32)');g.addColorStop(.64,\`hsla(\${(hue+190)%360},100%,70%,.16)\`);g.addColorStop(1,'rgba(255,255,255,0)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);if(depth>.22){ctx.globalCompositeOperation='difference';ctx.globalAlpha=Math.min(.18,(depth-.22)*.24);ctx.fillStyle='white';ctx.fillRect(0,0,W,H)}ctx.restore()}if(faceGeom&&(maskActive||maskDismissStart)){const f=faceGeom;ctx.save();faceMaskPath(f.outline,1.04);ctx.clip();const x=f.center.x+f.yaw*f.w*.30,g=ctx.createLinearGradient(x-f.w*.42,f.minY,x+f.w*.42,f.maxY);g.addColorStop(0,'rgba(255,255,255,0)');g.addColorStop(.42,\`hsla(\${hue},100%,76%,0)\`);g.addColorStop(.5,\`hsla(\${(hue+70)%360},100%,82%,.22)\`);g.addColorStop(.57,'rgba(255,255,255,.26)');g.addColorStop(.66,\`hsla(\${(hue+190)%360},100%,74%,.14)\`);g.addColorStop(1,'rgba(255,255,255,0)');ctx.fillStyle=g;ctx.fillRect(f.minX-f.w*.2,f.minY,f.w*1.4,f.h);const inv=Math.max(0,(Math.abs(f.yaw)-.28)/.72);if(inv>0){ctx.globalCompositeOperation='difference';ctx.globalAlpha=.18*inv;ctx.fillStyle='white';ctx.fillRect(f.minX-f.w*.2,f.minY,f.w*1.4,f.h)}ctx.restore()}ctx.restore()}\
+function drawNegativeReactive(now){const hue=presetHue(now);for(const h of trackedHands){const poly=clipHandPoly(h,now);if(!poly)continue;ctx.save();pathPoly(poly);ctx.clip();ctx.globalCompositeOperation='difference';ctx.globalAlpha=.72;ctx.fillStyle='white';ctx.fillRect(0,0,W,H);ctx.globalCompositeOperation='screen';ctx.globalAlpha=.45;ctx.fillStyle=\`hsla(\${hue},100%,48%,.45)\`;ctx.fillRect(0,0,W,H);ctx.restore()}if(faceGeom&&(maskActive||maskDismissStart)){const f=faceGeom;ctx.save();faceMaskPath(f.outline,1.04);ctx.clip();ctx.globalCompositeOperation='difference';ctx.globalAlpha=.78;ctx.fillStyle='white';ctx.fillRect(f.minX-f.w*.2,f.minY,f.w*1.4,f.h);ctx.globalCompositeOperation='screen';const g=ctx.createRadialGradient(f.center.x,f.center.y,0,f.center.x,f.center.y,Math.max(f.w,f.h)*.75);g.addColorStop(0,\`hsla(\${hue},100%,60%,.26)\`);g.addColorStop(.65,\`hsla(\${(hue+155)%360},100%,50%,.18)\`);g.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=g;ctx.fillRect(f.minX-f.w*.3,f.minY-f.h*.2,f.w*1.6,f.h*1.4);ctx.restore()}}\
+function bolt(ctx0,a,b,seed,hue,alpha=.8,width=2.1){const seg=6;ctx0.beginPath();ctx0.moveTo(a.x,a.y);for(let i=1;i<seg;i++){const t=i/seg,x=a.x+(b.x-a.x)*t,y=a.y+(b.y-a.y)*t,j=Math.sin(seed*1.7+i*3.1)*9+Math.cos(seed*.9+i*1.8)*5;const nx=-(b.y-a.y),ny=b.x-a.x,len=Math.hypot(nx,ny)||1;ctx0.lineTo(x+nx/len*j,y+ny/len*j)}ctx0.lineTo(b.x,b.y);ctx0.strokeStyle=\`hsla(\${hue},100%,78%,\${alpha})\`;ctx0.lineWidth=width*fx;ctx0.shadowColor=\`hsla(\${hue},100%,62%,1)\`;ctx0.shadowBlur=11*fx;ctx0.stroke()}\
+function drawElectricReactive(now){const hue=presetHue(now);ctx.save();ctx.globalCompositeOperation='screen';for(const h of trackedHands){const poly=clipHandPoly(h,now);if(!poly)continue;const c0=centroid(poly);ctx.save();pathPoly(poly);ctx.clip();for(let i=0;i<poly.length;i++)bolt(ctx,poly[i],c0,now*.018+i*7,(hue+i*25)%360,.78,2.0);for(let i=0;i<poly.length-2;i++)bolt(ctx,poly[i],poly[(i+2)%poly.length],now*.012+i*11,(hue+85+i*18)%360,.35,1.2);ctx.restore()}if(faceGeom&&(maskActive||maskDismissStart)){const f=faceGeom;ctx.save();faceMaskPath(f.outline,1.04);ctx.clip();const left={x:f.minX+f.w*.12,y:f.minY+f.h*.20},right={x:f.maxX-f.w*.12,y:f.minY+f.h*.20},jawL={x:f.minX+f.w*.24,y:f.maxY-f.h*.16},jawR={x:f.maxX-f.w*.24,y:f.maxY-f.h*.16},nose=f.nose||f.center;bolt(ctx,left,nose,now*.016,(hue+25)%360,.66,1.7);bolt(ctx,right,nose,now*.013,(hue+115)%360,.66,1.7);bolt(ctx,nose,jawL,now*.014,(hue+185)%360,.58,1.5);bolt(ctx,nose,jawR,now*.017,(hue+265)%360,.58,1.5);ctx.restore()}ctx.restore()}\
+function drawPresetOverlay(now){const id=fxPreset().id;if(id==='negative')drawNegativeReactive(now);else if(id==='electric')drawElectricReactive(now);else drawGlassReactive(now)}";
+
+    t=t.replace('function drawMesh(now){',presetCode+'function drawMesh(now){');
+    t=t.replace('function drawMesh(now){drawFaceFX(now);const hue=(now*.028)%360,','function drawMesh(now){drawFaceFX(now);drawPresetOverlay(now);const hue=presetHue(now),');
+    t=t.replace('const hue=((now*.012)+(f.yaw*120)+(f.roll*70/Math.PI)+720)%360;','const hue=facePresetHue(now,f);');
+    t=t.replace(/fxBtn\.addEventListener\('click',\(\)=>\{fx=.*?\}\);/,"fxBtn.addEventListener('click',()=>{fxPresetIndex=(fxPresetIndex+1)%FX_PRESETS.length;fxBtn.textContent=fxPreset().label;fx=1;});");
+
+    document.open();document.write(t);document.close();
+  `;
+
+  const marker='    document.open();document.write(t);document.close();';
+  if(!s.includes(marker)) throw new Error('Patch point V6.1 tidak ditemukan.');
+  s=s.replace('<title>HAND//FX V6.1 Loader</title>','<title>HAND//FX V6.2 Loader</title>')
+     .replace('<h2>HAND//FX V6.1</h2>','<h2>HAND//FX V6.2</h2>')
+     .replace('Loading proper holographic mask engine…','Loading material + preset engine…')
+     .replace(marker,injection+'\n'+marker);
+
+  document.open();document.write(s);document.close();
+}catch(e){
+  console.error(e);
+  document.body.innerHTML='<div class="boot"><div class="box"><h2>V6.2 gagal boot</h2><p>'+String(e.message||e)+'</p><small>Refresh halaman HTTPS ini.</small></div></div>';
+}
+})();
+</script></body></html>
