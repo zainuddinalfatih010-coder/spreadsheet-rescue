@@ -13,24 +13,24 @@ html,body{margin:0;height:100%;background:#050508;color:#fff;font-family:system-
 <script>
 (async()=>{
 try{
-  let s=await (await fetch('./v7.html?v=701',{cache:'no-store'})).text();
-  if(!s.includes('HAND//FX V7.0')) throw new Error('Baseline V7.0 gagal dimuat.');
+  let src=await (await fetch('./v7.html?v=701b',{cache:'no-store'})).text();
+  if(!src.includes('HAND//FX V7.0')) throw new Error('Baseline V7.0 gagal dimuat.');
 
-  const brokenV63="t=t.replace('drawPresetOverlay(now);if(debug)drawDebug(now)}','drawPresetOverlay(now);drawV63Overlay(now);if(debug)drawDebug(now)}');";
-  const fixedV63="t=t.replace('if(debug)drawDebug(now)}','drawV63Overlay(now);if(debug)drawDebug(now)}');";
-  if(!s.includes(brokenV63)) throw new Error('V6.3 hook source tidak ditemukan.');
-  s=s.replace(brokenV63,fixedV63);
+  const v7FetchCheck="if(!s.includes('HAND//FX V6.3')) throw new Error('Baseline V6.3 gagal dimuat.');";
+  const v7FetchFixed=v7FetchCheck+"\n  const brokenV63=\"t=t.replace('drawPresetOverlay(now);if(debug)drawDebug(now)}','drawPresetOverlay(now);drawV63Overlay(now);if(debug)drawDebug(now)}');\";\n  const fixedV63=\"t=t.replace('if(debug)drawDebug(now)}','drawV63Overlay(now);if(debug)drawDebug(now)}');\";\n  if(s.includes(brokenV63)) s=s.replace(brokenV63,fixedV63);";
+  if(!src.includes(v7FetchCheck)) throw new Error('V7 fetch hook tidak ditemukan.');
+  src=src.replace(v7FetchCheck,v7FetchFixed);
 
   const brokenV7="if(!t.includes('drawPresetOverlay(now);drawV63Overlay(now);if(debug)drawDebug(now)}')) throw new Error('V7 draw hook tidak ditemukan.');\n    t=t.replace('function drawMesh(now){',v70Code+'function drawMesh(now){');\n    t=t.replace('drawPresetOverlay(now);drawV63Overlay(now);if(debug)drawDebug(now)}','drawPresetOverlay(now);drawV63Overlay(now);drawSpellSuite(now);if(debug)drawDebug(now)}');";
   const fixedV7="t=t.replace('function drawMesh(now){',v70Code+'function drawMesh(now){');\n    if(!t.includes('if(debug)drawDebug(now)}')) throw new Error('V7 final draw tail tidak ditemukan.');\n    t=t.replace('if(debug)drawDebug(now)}','drawSpellSuite(now);if(debug)drawDebug(now)}');";
-  if(!s.includes(brokenV7)) throw new Error('V7 hook source tidak ditemukan.');
-  s=s.replace(brokenV7,fixedV7);
+  if(!src.includes(brokenV7)) throw new Error('V7 draw patch source tidak ditemukan.');
+  src=src.replace(brokenV7,fixedV7);
 
-  s=s.replaceAll('HAND//FX V7.0 Loader','HAND//FX V7.1 Loader')
-     .replaceAll('<h2>HAND//FX V7.0</h2>','<h2>HAND//FX V7.1</h2>')
-     .replaceAll('V7.0 gagal boot','V7.1 gagal boot');
+  src=src.replaceAll('HAND//FX V7.0 Loader','HAND//FX V7.1 Loader')
+         .replaceAll('<h2>HAND//FX V7.0</h2>','<h2>HAND//FX V7.1</h2>')
+         .replaceAll('V7.0 gagal boot','V7.1 gagal boot');
 
-  document.open();document.write(s);document.close();
+  document.open();document.write(src);document.close();
 }catch(e){
   console.error(e);
   document.body.innerHTML='<div class="boot"><div class="box"><h2>V7.1 gagal boot</h2><p>'+String(e.message||e)+'</p><small>Refresh halaman HTTPS ini.</small></div></div>';
