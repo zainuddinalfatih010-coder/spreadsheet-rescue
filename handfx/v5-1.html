@@ -1,0 +1,27 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>HAND//FX V5.1</title><body style="margin:0;background:#060609;color:white;font-family:system-ui"><div id="boot" style="height:100dvh;display:grid;place-items:center;text-align:center;padding:24px">Loading HAND//FX V5.1…</div><script>
+(async()=>{
+  try{
+    let t=await (await fetch('./v5.html',{cache:'no-store'})).text();
+    t=t.replaceAll('HAND//FX V5','HAND//FX V5.1').replaceAll('· V5<','· V5.1<');
+    t=t.replace(
+      "function strokeGlowPath(points, hue, closed=true, width=4){ if(points.length<2)return; ctx.save(); ctx.globalCompositeOperation='screen'; ctx.shadowColor=`hsla(${hue},100%,70%,.95)`; ctx.shadowBlur=24*fx; ctx.strokeStyle=`hsla(${hue},100%,78%,.92)`; ctx.lineWidth=width*fx; ctx.beginPath(); ctx.moveTo(points[0].x,points[0].y); for(let i=1;i<points.length;i++)ctx.lineTo(points[i].x,points[i].y); if(closed) ctx.closePath(); ctx.stroke(); ctx.restore(); }",
+      "function strokeGlowPath(points,hue,closed=true,width=4){if(points.length<2)return;ctx.save();ctx.globalCompositeOperation='screen';ctx.lineJoin='round';ctx.lineCap='round';ctx.shadowColor=`hsla(${hue},100%,62%,1)`;ctx.shadowBlur=32*fx;ctx.strokeStyle=`hsla(${hue},100%,58%,.98)`;ctx.lineWidth=(width+4.2)*fx;ctx.beginPath();ctx.moveTo(points[0].x,points[0].y);for(let i=1;i<points.length;i++)ctx.lineTo(points[i].x,points[i].y);if(closed)ctx.closePath();ctx.stroke();ctx.shadowBlur=14*fx;ctx.strokeStyle='rgba(255,255,255,.98)';ctx.lineWidth=Math.max(1.6,width*.34)*fx;ctx.stroke();ctx.restore();}"
+    );
+    t=t.replace(
+      "function fillPoly(points, hueA, hueB, alpha=.22){ if(points.length<3)return; const g=ctx.createLinearGradient(points[0].x,points[0].y,points[Math.floor(points.length/2)].x,points[Math.floor(points.length/2)].y); g.addColorStop(0,`hsla(${hueA},100%,68%,${alpha})`); g.addColorStop(.55,'rgba(255,255,255,.08)'); g.addColorStop(1,`hsla(${hueB},100%,62%,${alpha*.95})`); ctx.save(); ctx.globalCompositeOperation='screen'; ctx.fillStyle=g; ctx.beginPath(); ctx.moveTo(points[0].x,points[0].y); for(let i=1;i<points.length;i++)ctx.lineTo(points[i].x,points[i].y); ctx.closePath(); ctx.fill(); ctx.restore(); }",
+      "function fillPoly(points,hueA,hueB,alpha=.34){if(points.length<3)return;const g=ctx.createLinearGradient(points[0].x,points[0].y,points[Math.floor(points.length/2)].x,points[Math.floor(points.length/2)].y);g.addColorStop(0,`hsla(${hueA},100%,58%,${alpha})`);g.addColorStop(.38,`hsla(${(hueA+55)%360},100%,64%,${alpha*.92})`);g.addColorStop(.58,'rgba(255,255,255,.16)');g.addColorStop(1,`hsla(${hueB},100%,55%,${alpha})`);ctx.save();ctx.globalCompositeOperation='screen';ctx.shadowColor=`hsla(${hueA},100%,60%,.55)`;ctx.shadowBlur=18*fx;ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(points[0].x,points[0].y);for(let i=1;i<points.length;i++)ctx.lineTo(points[i].x,points[i].y);ctx.closePath();ctx.fill();ctx.restore();}"
+    );
+    t=t.replace(
+      "function drawVertices(points, hue){ ctx.save(); ctx.globalCompositeOperation='screen'; for(const p of points){ const rg=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,18*fx); rg.addColorStop(0,'rgba(255,255,255,.98)'); rg.addColorStop(.38,`hsla(${hue},100%,75%,.84)`); rg.addColorStop(1,'rgba(255,255,255,0)'); ctx.fillStyle=rg; ctx.beginPath(); ctx.arc(p.x,p.y,18*fx,0,Math.PI*2); ctx.fill(); } ctx.restore(); }",
+      "function drawVertices(points,hue){ctx.save();ctx.globalCompositeOperation='screen';for(const p of points){const rg=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,24*fx);rg.addColorStop(0,'rgba(255,255,255,1)');rg.addColorStop(.18,`hsla(${hue},100%,72%,1)`);rg.addColorStop(.55,`hsla(${hue},100%,55%,.6)`);rg.addColorStop(1,'rgba(255,255,255,0)');ctx.fillStyle=rg;ctx.beginPath();ctx.arc(p.x,p.y,24*fx,0,Math.PI*2);ctx.fill();ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(p.x,p.y,3.2*fx,0,Math.PI*2);ctx.fill();}ctx.restore();}"
+    );
+    t=t.replace("ctx.strokeStyle=`hsla(${hue},100%,85%,.45)`; ctx.lineWidth=1.5*fx;","ctx.strokeStyle=`hsla(${hue},100%,88%,.72)`; ctx.shadowColor=`hsla(${hue},100%,70%,.8)`; ctx.shadowBlur=10*fx; ctx.lineWidth=2.1*fx;");
+    t=t.replace("fillPoly(points,hueBase,(hueBase+120)%360,.18); strokeGlowPath(points,hueBase,true,3.2);","fillPoly(points,hueBase,(hueBase+120)%360,.34); strokeGlowPath(points,hueBase,true,4.4);");
+    t=t.replace("g.addColorStop(0,`hsla(${hueBase},100%,68%,.16)`); g.addColorStop(.5,'rgba(255,255,255,.12)'); g.addColorStop(1,`hsla(${(hueBase+180)%360},100%,60%,.16)`);","g.addColorStop(0,`hsla(${hueBase},100%,58%,.31)`); g.addColorStop(.5,'rgba(255,255,255,.20)'); g.addColorStop(1,`hsla(${(hueBase+180)%360},100%,55%,.31)`);");
+    t=t.replace("ctx.strokeStyle=`hsla(${(hueBase+i*22)%360},100%,84%,.74)`; ctx.lineWidth=2.3*fx;","ctx.strokeStyle=`hsla(${(hueBase+i*22)%360},100%,76%,.98)`; ctx.lineWidth=4.2*fx;");
+    t=t.replace("ctx.strokeStyle='rgba(255,255,255,.38)'; ctx.lineWidth=1.2*fx;","ctx.strokeStyle='rgba(255,255,255,.72)'; ctx.lineWidth=1.8*fx;");
+    t=t.replace("ctx.strokeStyle=`hsla(${(hueBase+210)%360},100%,86%,.55)`; ctx.lineWidth=2*fx;","ctx.strokeStyle=`hsla(${(hueBase+210)%360},100%,82%,.9)`; ctx.lineWidth=3.4*fx;");
+    document.open();document.write(t);document.close();
+  }catch(e){document.querySelector('#boot').textContent='Gagal memuat V5.1: '+e.message;}
+})();
+</script>
