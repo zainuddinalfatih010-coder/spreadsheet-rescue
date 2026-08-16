@@ -39,7 +39,6 @@ jobs:
             echo 'Unexpected iframe in fetched game HTML' >&2
             exit 1
           fi
-          grep -q '__V12' PROJECT-3-TIK/index.html
           grep -q 'requestAnimationFrame' PROJECT-3-TIK/index.html
 
       - name: Configure Pages
@@ -71,7 +70,6 @@ jobs:
             sleep 5
           done
           test "$ok" = '1'
-          grep -q '__V12' /tmp/project3-live.html
           grep -q 'requestAnimationFrame' /tmp/project3-live.html
           if grep -qi '<iframe' /tmp/project3-live.html; then
             echo 'Public page unexpectedly contains iframe' >&2
@@ -81,4 +79,19 @@ jobs:
             echo 'Public page unexpectedly still contains loader fetch' >&2
             exit 1
           fi
-          echo 'PUBLIC_SMOKE_PASS'
+
+          browser="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          echo "Browser: $browser"
+          test -n "$browser"
+          timeout 45 "$browser" --headless --no-sandbox --disable-gpu \
+            --virtual-time-budget=4000 --dump-dom "$url" > /tmp/project3-dom.html
+          grep -qi '<canvas' /tmp/project3-dom.html
+
+          timeout 45 "$browser" --headless --no-sandbox --disable-gpu \
+            --virtual-time-budget=4000 --window-size=1280,720 \
+            --screenshot=/tmp/project3-live.png "$url" >/tmp/chrome-shot.log 2>&1
+          test -s /tmp/project3-live.png
+          pngbytes=$(wc -c < /tmp/project3-live.png)
+          echo "Screenshot: ${pngbytes} bytes"
+          test "$pngbytes" -gt 10000
+          echo 'PUBLIC_BROWSER_SMOKE_PASS'
