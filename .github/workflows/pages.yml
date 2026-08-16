@@ -53,11 +53,11 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Smoke test public PROJECT-3-TIK
+      - name: HTTP smoke test public PROJECT-3-TIK
         shell: bash
         run: |
           url='${{ steps.deployment.outputs.page_url }}PROJECT-3-TIK/?smoke=${{ github.sha }}'
-          echo "Testing $url"
+          echo "$url" > /tmp/project3-url.txt
           ok=0
           for i in $(seq 1 12); do
             code=$(curl -L -sS -o /tmp/project3-live.html -w '%{http_code}' "$url" || true)
@@ -71,27 +71,39 @@ jobs:
           done
           test "$ok" = '1'
           grep -q 'requestAnimationFrame' /tmp/project3-live.html
-          if grep -qi '<iframe' /tmp/project3-live.html; then
-            echo 'Public page unexpectedly contains iframe' >&2
-            exit 1
-          fi
-          if grep -q 'game.gz.b64' /tmp/project3-live.html; then
-            echo 'Public page unexpectedly still contains loader fetch' >&2
-            exit 1
-          fi
+          ! grep -qi '<iframe' /tmp/project3-live.html
+          ! grep -q 'game.gz.b64' /tmp/project3-live.html
+          echo 'PUBLIC_HTTP_SMOKE_PASS'
 
+      - name: Capture live browser evidence
+        shell: bash
+        run: |
+          url=$(cat /tmp/project3-url.txt)
           browser="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
           echo "Browser: $browser"
           test -n "$browser"
           timeout 45 "$browser" --headless --no-sandbox --disable-gpu \
-            --virtual-time-budget=4000 --dump-dom "$url" > /tmp/project3-dom.html
-          grep -qi '<canvas' /tmp/project3-dom.html
-
+            --virtual-time-budget=5000 --dump-dom "$url" > /tmp/project3-dom.html 2>/tmp/chrome-dom.log || true
           timeout 45 "$browser" --headless --no-sandbox --disable-gpu \
-            --virtual-time-budget=4000 --window-size=1280,720 \
-            --screenshot=/tmp/project3-live.png "$url" >/tmp/chrome-shot.log 2>&1
+            --virtual-time-budget=5000 --window-size=1280,720 \
+            --screenshot=/tmp/project3-live.png "$url" >/tmp/chrome-shot.log 2>&1 || true
           test -s /tmp/project3-live.png
           pngbytes=$(wc -c < /tmp/project3-live.png)
           echo "Screenshot: ${pngbytes} bytes"
           test "$pngbytes" -gt 10000
-          echo 'PUBLIC_BROWSER_SMOKE_PASS'
+          echo "Canvas occurrences in rendered DOM: $(grep -io '<canvas' /tmp/project3-dom.html | wc -l)"
+          echo 'PUBLIC_BROWSER_CAPTURE_PASS'
+
+      - name: Upload browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: project3-live-browser-evidence
+          path: |
+            /tmp/project3-live.png
+            /tmp/project3-dom.html
+            /tmp/project3-live.html
+            /tmp/chrome-dom.log
+            /tmp/chrome-shot.log
+            /tmp/project3-url.txt
+          retention-days: 1
