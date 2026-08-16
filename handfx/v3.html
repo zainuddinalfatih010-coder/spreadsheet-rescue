@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#060609">
+<title>HAND//FX V3</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;height:100%;background:#060609;color:#fff;font-family:system-ui,-apple-system,Segoe UI,sans-serif}body{overflow:hidden}.app{position:relative;width:min(100vw,520px);height:100dvh;margin:auto;background:#0a0a0f;overflow:hidden}.stage{position:absolute;inset:0 0 112px}.stage canvas{width:100%;height:100%;display:block;background:#111}.top{position:absolute;z-index:4;top:max(12px,env(safe-area-inset-top));left:12px;right:12px;display:flex;justify-content:space-between}.pill,.btn{border:1px solid #ffffff22;background:#0b0b10bb;color:#fff;border-radius:999px;backdrop-filter:blur(12px)}.pill{padding:8px 11px;font-size:12px}.btn{width:42px;height:42px;font-size:22px}.status{position:absolute;z-index:5;top:max(62px,calc(env(safe-area-inset-top) + 50px));left:50%;transform:translateX(-50%);max-width:90%;padding:8px 11px;border:1px solid #ffffff22;border-radius:999px;background:#0b0b10cc;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#ffd66b;margin-right:7px}.hint{position:absolute;z-index:4;left:50%;bottom:126px;transform:translateX(-50%);padding:7px 10px;border-radius:999px;background:#0b0b10bb;border:1px solid #ffffff1c;font-size:11px;white-space:nowrap}.controls{position:absolute;z-index:6;left:0;right:0;bottom:0;height:112px;border-top:1px solid #ffffff12;background:linear-gradient(#0b0b10,#060609);display:grid;grid-template-columns:1fr 84px 1fr;align-items:center;gap:14px;padding:10px 18px max(12px,env(safe-area-inset-bottom))}.small{height:48px;border-radius:15px;border:1px solid #ffffff22;background:#12121a;color:#fff;font-weight:800}.rec{width:70px;height:70px;border:3px solid #fff;border-radius:50%;background:transparent;padding:6px;justify-self:center}.rec span{display:block;width:100%;height:100%;border-radius:50%;background:#ff4158}.rec:disabled{opacity:.35}.overlay{position:absolute;z-index:10;inset:0;display:grid;place-items:center;padding:24px;background:linear-gradient(#06060966,#060609ee);backdrop-filter:blur(5px)}.card{width:min(100%,390px);padding:23px;border:1px solid #ffffff22;border-radius:24px;background:#111119ee;text-align:center}.card h1{margin:0 0 10px;font-size:27px;line-height:1.05}.card p{margin:0 0 16px;color:#aaaab5;font-size:14px;line-height:1.45}.go{width:100%;border:0;border-radius:14px;padding:14px;background:#f5f5fa;color:#08080c;font-weight:900;font-size:15px}.tiny{margin-top:12px!important;font-size:11px!important;color:#858691!important}.hidden{display:none!important}.diag{margin-top:12px;padding:10px;border-radius:12px;background:#09090d;border:1px solid #ffffff12;text-align:left;font:11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#b8bac5;word-break:break-word}
+</style>
+</head>
+<body>
+<main class="app">
+<section class="stage">
+<canvas id="c" width="720" height="1280"></canvas>
+<video id="v" autoplay playsinline muted hidden></video>
+<div class="top"><div class="pill"><b>HAND//FX</b> · V3</div><button id="flip" class="btn">↻</button></div>
+<div class="status"><i id="dot"></i><span id="status">Siap dites</span></div>
+<div class="hint">Cubit jempol + telunjuk. Prism ngikut otomatis.</div>
+</section>
+<section class="controls"><button id="track" class="small">TRACK OFF</button><button id="rec" class="rec" disabled><span></span></button><button id="fx" class="small">FX 100%</button></section>
+<div id="overlay" class="overlay"><div class="card"><div style="font-size:36px;margin-bottom:6px">✦</div><h1>Automatic hand tracking.</h1><p>Tekan tombol. Kamera diminta dulu; tracker baru dimuat sesudah kamera berhasil.</p><button id="go" class="go">Nyalakan Kamera</button><div id="diag" class="diag">secureContext: checking…</div><p class="tiny">Kalau dibuka dari browser mini dan kamera ditolak, pilih ⋮ → Open in Chrome.</p></div></div>
+</main>
+<script>
+(()=>{
+'use strict';
+const $=s=>document.querySelector(s), c=$('#c'), ctx=c.getContext('2d',{alpha:false}), v=$('#v'), go=$('#go'), overlay=$('#overlay'), statusEl=$('#status'), dot=$('#dot'), diag=$('#diag'), flip=$('#flip'), track=$('#track'), fxBtn=$('#fx'), rec=$('#rec');
+const W=720,H=1280,MODEL='https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task';
+let stream=null, facing='user', running=false, handLandmarker=null, results=null, lastVideoTime=-1, lastDetect=0, debug=false, fx=1, sm=new Map();
+let FilesetResolver=null,HandLandmarker=null;
+function setStatus(t,ok=false){statusEl.textContent=t;dot.style.background=ok?'#8dffad':'#ffd66b'}
+function diagnostic(extra=''){diag.textContent=`secureContext: ${window.isSecureContext}\nmediaDevices: ${!!navigator.mediaDevices}\ngetUserMedia: ${!!navigator.mediaDevices?.getUserMedia}\n${extra}`}
+diagnostic();
+function stopCamera(){if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}}
+async function openCamera(){
+ if(!window.isSecureContext) throw new Error('Halaman tidak dianggap HTTPS/secure oleh browser.');
+ if(!navigator.mediaDevices?.getUserMedia) throw new Error('Browser ini tidak menyediakan getUserMedia. Buka di Chrome.');
+ setStatus('Meminta izin kamera…');
+ diagnostic('state: requesting camera permission');
+ stopCamera();
+ stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:facing},width:{ideal:1280},height:{ideal:720},frameRate:{ideal:30}},audio:false});
+ v.srcObject=stream; await v.play();
+ overlay.classList.add('hidden'); rec.disabled=false; running=true; setStatus('Kamera hidup',true); diagnostic('state: camera running');
+ requestAnimationFrame(loop);
+}
+async function loadTracker(){
+ setStatus('Kamera hidup — memuat hand tracker…');
+ diagnostic('state: loading MediaPipe');
+ const mod=await import('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/vision_bundle.mjs');
+ FilesetResolver=mod.FilesetResolver; HandLandmarker=mod.HandLandmarker;
+ if(!FilesetResolver||!HandLandmarker) throw new Error('Export MediaPipe tidak ditemukan.');
+ const vision=await FilesetResolver.forVisionTasks('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@latest/wasm');
+ try{handLandmarker=await HandLandmarker.createFromOptions(vision,{baseOptions:{modelAssetPath:MODEL,delegate:'GPU'},runningMode:'VIDEO',numHands:2,minHandDetectionConfidence:.45,minHandPresenceConfidence:.45,minTrackingConfidence:.45})}
+ catch(gpuErr){console.warn(gpuErr);handLandmarker=await HandLandmarker.createFromOptions(vision,{baseOptions:{modelAssetPath:MODEL,delegate:'CPU'},runningMode:'VIDEO',numHands:2,minHandDetectionConfidence:.45,minHandPresenceConfidence:.45,minTrackingConfidence:.45})}
+ setStatus('Tracker siap — tunjukkan tangan',true); diagnostic('state: tracker ready');
+}
+function crop(){const vw=v.videoWidth||1280,vh=v.videoHeight||720,tr=W/H,sr=vw/vh;if(sr>tr){const sh=vh,sw=sh*tr;return{sx:(vw-sw)/2,sy:0,sw,sh,vw,vh}}const sw=vw,sh=sw/tr;return{sx:0,sy:(vh-sh)/2,sw,sh,vw,vh}}
+function map(p){const q=crop(),sx=p.x*q.vw,sy=p.y*q.vh;let nx=(sx-q.sx)/q.sw,ny=(sy-q.sy)/q.sh;if(facing==='user')nx=1-nx;return{x:nx*W,y:ny*H,z:p.z||0}}
+function smooth(k,p,a=.34){const o=sm.get(k);if(!o){sm.set(k,p);return p}const n={x:o.x+(p.x-o.x)*a,y:o.y+(p.y-o.y)*a,z:o.z+(p.z-o.z)*a};sm.set(k,n);return n}
+function anchor(i){const h=results?.landmarks?.[i];if(!h)return null;const a=map(h[4]),b=map(h[8]);return smooth('a'+i,{x:(a.x+b.x)/2,y:(a.y+b.y)/2,z:(a.z+b.z)/2})}
+function drawCamera(){if(v.readyState<2){ctx.fillStyle='#111';ctx.fillRect(0,0,W,H);return}const q=crop();ctx.save();if(facing==='user'){ctx.translate(W,0);ctx.scale(-1,1)}ctx.drawImage(v,q.sx,q.sy,q.sw,q.sh,0,0,W,H);ctx.restore()}
+function detect(){if(!handLandmarker||v.readyState<2)return;const now=performance.now();if(v.currentTime!==lastVideoTime&&now-lastDetect>28){lastVideoTime=v.currentTime;lastDetect=now;try{results=handLandmarker.detectForVideo(v,now);const n=results?.landmarks?.length||0;setStatus(n?`${n} tangan terkunci`:'Cari tanganmu di frame',!!n)}catch(e){console.warn(e)}}}
+function prism(){let n=results?.landmarks?.length||0;if(!n)return;let a=anchor(0),b=n>1?anchor(1):null;if(!b){const h=results.landmarks[0];a=smooth('thumb',map(h[4]));b=smooth('index',map(h[8]))}if(!a||!b)return;const dx=b.x-a.x,dy=b.y-a.y,d=Math.max(20,Math.hypot(dx,dy)),nx=-dy/d,ny=dx/d,t=Math.min(100,Math.max(30,d*.12))*fx,depth=t*.7,px=(dy/d)*depth*.55,py=(-dx/d)*depth*.55,p=[{x:a.x-nx*t/2,y:a.y-ny*t/2},{x:b.x-nx*t/2,y:b.y-ny*t/2},{x:b.x+nx*t/2,y:b.y+ny*t/2},{x:a.x+nx*t/2,y:a.y+ny*t/2}],q=p.map(z=>({x:z.x+px,y:z.y+py})),hue=performance.now()*.04%360,g=ctx.createLinearGradient(a.x,a.y,b.x,b.y);g.addColorStop(0,`hsla(${hue},100%,60%,.95)`);g.addColorStop(.38,`hsla(${(hue+95)%360},100%,72%,.9)`);g.addColorStop(.68,'rgba(255,255,255,.95)');g.addColorStop(1,`hsla(${(hue+215)%360},100%,60%,.95)`);ctx.save();ctx.globalCompositeOperation='screen';ctx.shadowColor=`hsla(${hue},100%,65%,.95)`;ctx.shadowBlur=30*fx;ctx.globalAlpha=.34;ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(p[0].x,p[0].y);p.slice(1).forEach(z=>ctx.lineTo(z.x,z.y));ctx.closePath();ctx.fill();ctx.globalAlpha=.95;ctx.strokeStyle='#ffffffdd';ctx.lineWidth=4*fx;for(const poly of[p,q]){ctx.beginPath();ctx.moveTo(poly[0].x,poly[0].y);poly.slice(1).forEach(z=>ctx.lineTo(z.x,z.y));ctx.closePath();ctx.stroke()}for(let i=0;i<4;i++){ctx.beginPath();ctx.moveTo(p[i].x,p[i].y);ctx.lineTo(q[i].x,q[i].y);ctx.stroke()}ctx.strokeStyle=g;ctx.lineWidth=12*fx;ctx.globalAlpha=.55;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();ctx.restore()}
+function debugPoints(){if(!debug||!results?.landmarks)return;ctx.save();ctx.globalCompositeOperation='screen';for(const h of results.landmarks){h.forEach((pt,i)=>{const z=map(pt);ctx.fillStyle=(i===4||i===8)?'#fff':'#70ffd0';ctx.beginPath();ctx.arc(z.x,z.y,(i===4||i===8)?6:3,0,Math.PI*2);ctx.fill()})}ctx.restore()}
+function loop(){if(!running)return;drawCamera();detect();prism();debugPoints();requestAnimationFrame(loop)}
+go.addEventListener('click',async()=>{go.disabled=true;go.textContent='Minta izin kamera…';setStatus('Tombol bekerja — meminta kamera…');try{await openCamera()}catch(e){console.error(e);go.disabled=false;go.textContent='Coba Lagi';setStatus('Kamera gagal dibuka');diagnostic('ERROR: '+(e.name||'Error')+' — '+(e.message||e));alert((e.message||e)+'\n\nBuka menu browser (⋮) → Open in Chrome, lalu coba lagi.');return}try{await loadTracker()}catch(e){console.error(e);setStatus('Kamera hidup — tracker gagal dimuat');diagnostic('TRACKER ERROR: '+(e.message||e));alert('Kamera sudah hidup, tapi tracker gagal dimuat. Kirim screenshot status ini ke Jipi.\n\n'+(e.message||e))}});
+flip.addEventListener('click',async()=>{facing=facing==='user'?'environment':'user';sm.clear();try{await openCamera()}catch(e){console.error(e)}});
+track.addEventListener('click',()=>{debug=!debug;track.textContent='TRACK '+(debug?'ON':'OFF')});
+fxBtn.addEventListener('click',()=>{fx=fx===1?1.35:fx===1.35?0.72:1;fxBtn.textContent='FX '+Math.round(fx*100)+'%'});
+window.addEventListener('error',e=>{diagnostic('SCRIPT ERROR: '+e.message)});
+window.addEventListener('unhandledrejection',e=>{diagnostic('PROMISE ERROR: '+(e.reason?.message||e.reason||'unknown'))});
+})();
+</script>
+</body></html>
