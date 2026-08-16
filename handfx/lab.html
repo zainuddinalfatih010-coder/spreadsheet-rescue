@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#050508">
+<title>HAND//FX Web Lab</title>
+<style>
+html,body{margin:0;height:100%;background:#050508;color:#fff;font-family:system-ui,-apple-system,Segoe UI,sans-serif}.boot{height:100dvh;display:grid;place-items:center;text-align:center;padding:26px}.box{max-width:390px}.spin{font-size:42px;animation:p .8s ease-in-out infinite alternate}@keyframes p{to{transform:scale(1.16);filter:drop-shadow(0 0 18px #74e6ff)}}small{color:#999}
+</style>
+</head>
+<body><div class="boot"><div class="box"><div class="spin">✦</div><h2>HAND//FX WEB LAB</h2><p>Loading latest test build…</p><small>Permanent dev link · refresh for updates</small></div></div>
+<script>
+(async()=>{
+  try{
+    const bust=Date.now();
+    const target=(await (await fetch('./lab-target.txt?ts='+bust,{cache:'no-store'})).text()).trim();
+    if(!/^v[\w.-]+\.html$/.test(target)) throw new Error('Invalid lab target: '+target);
+    const html=await (await fetch('./'+target+'?lab='+bust,{cache:'no-store'})).text();
+    if(!html.includes('HAND//FX')) throw new Error('Target build gagal dimuat.');
+    document.open();document.write(html);document.close();
+  }catch(e){
+    console.error(e);
+    document.body.innerHTML='<div class="boot"><div class="box"><h2>WEB LAB gagal boot</h2><p>'+String(e.message||e)+'</p><small>Refresh halaman ini.</small></div></div>';
+  }
+})();
+</script>
+</body>
+</html>
