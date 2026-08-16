@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#050508">
+<title>HAND//FX V7.2</title>
+<style>
+html,body{margin:0;height:100%;background:#050508;color:#fff;font-family:system-ui,-apple-system,Segoe UI,sans-serif}.boot{height:100dvh;display:grid;place-items:center;text-align:center;padding:26px}.box{max-width:390px}.spin{font-size:42px;animation:p 1s ease-in-out infinite alternate}@keyframes p{to{transform:scale(1.15);filter:drop-shadow(0 0 22px #ff7a18)}}small{color:#aaa}
+</style>
+</head>
+<body><div class="boot"><div class="box"><div class="spin">✦</div><h2>HAND//FX V7.2</h2><p>Loading double-clap spell-only mode…</p><small>HTTPS runtime</small></div></div>
+<script>
+(async()=>{
+try{
+  let src=await (await fetch('./v7.html?v=702',{cache:'no-store'})).text();
+  if(!src.includes('HAND//FX V7.0')) throw new Error('Baseline V7 gagal dimuat.');
+
+  const v7FetchCheck="if(!s.includes('HAND//FX V6.3')) throw new Error('Baseline V6.3 gagal dimuat.');";
+  const v7FetchFixed=v7FetchCheck+"\n  const brokenV63=\"t=t.replace('drawPresetOverlay(now);if(debug)drawDebug(now)}','drawPresetOverlay(now);drawV63Overlay(now);if(debug)drawDebug(now)}');\";\n  const fixedV63=\"t=t.replace('if(debug)drawDebug(now)}','drawV63Overlay(now);if(debug)drawDebug(now)}');\";\n  if(s.includes(brokenV63)) s=s.replace(brokenV63,fixedV63);";
+  if(!src.includes(v7FetchCheck)) throw new Error('V7 fetch hook tidak ditemukan.');
+  src=src.replace(v7FetchCheck,v7FetchFixed);
+
+  const brokenV7="if(!t.includes('drawPresetOverlay(now);drawV63Overlay(now);if(debug)drawDebug(now)}')) throw new Error('V7 draw hook tidak ditemukan.');\n    t=t.replace('function drawMesh(now){',v70Code+'function drawMesh(now){');\n    t=t.replace('drawPresetOverlay(now);drawV63Overlay(now);if(debug)drawDebug(now)}','drawPresetOverlay(now);drawV63Overlay(now);drawSpellSuite(now);if(debug)drawDebug(now)}');";
+
+  const fixedV7="const spellModeCode=\"let spellMode=false;let spellClap={armed:true,count:0,lastHit:0,lastNorm:9,coolUntil:0};\\nfunction clapPalmState(){if(!results?.landmarks||results.landmarks.length<2)return null;const hs=results.landmarks.slice(0,2).map(h=>{const ids=[0,5,9,13,17],ps=ids.map(i=>mapScreen(h[i])),c={x:ps.reduce((s,p)=>s+p.x,0)/ps.length,y:ps.reduce((s,p)=>s+p.y,0)/ps.length},w=Math.max(18,Math.hypot(ps[4].x-ps[1].x,ps[4].y-ps[1].y));return{c,w}});const d=Math.hypot(hs[0].c.x-hs[1].c.x,hs[0].c.y-hs[1].c.y),scale=(hs[0].w+hs[1].w)/2;return{norm:d/Math.max(18,scale)}}\\nfunction setSpellMode(on,now){spellMode=on;spellClap.coolUntil=now+650;spellClap.armed=false;spellClap.lastNorm=9;if(spellBtn){spellBtn.textContent=on?'SPELL ON':'SPELL OFF';spellBtn.style.pointerEvents='none';spellBtn.style.boxShadow=on?'0 0 20px rgba(255,122,24,.55)':'none'}setStatus(on?'SPELL MODE ON · double clap untuk keluar':'NORMAL MODE · double clap untuk spell',true)}\\nfunction updateSpellToggle(now){const st=clapPalmState();if(!st){if(spellClap.count&&now-spellClap.lastHit>1450)spellClap.count=0;return}const n=st.norm,closing=spellClap.lastNorm-n;if(!spellClap.armed&&n>1.65&&now>spellClap.coolUntil)spellClap.armed=true;if(spellClap.armed&&n<1.05&&closing>.06&&now>spellClap.coolUntil){if(now-spellClap.lastHit>1300)spellClap.count=0;spellClap.count++;spellClap.lastHit=now;spellClap.armed=false;if(spellClap.count===1)setStatus('CLAP 1/2 · tepuk sekali lagi…',true);if(spellClap.count>=2){spellClap.count=0;setSpellMode(!spellMode,now)}}spellClap.lastNorm=n}\\n\";\n    t=t.replace('function drawFaceFX(now){drawTransfer(now);drawFaceMask(now);drawFaceDebug()}','function drawFaceFX(now){}');\n    t=t.replace('updateWashGesture(now)}','}');\n    t=t.replace('function drawMesh(now){',v70Code+spellModeCode+'function drawMesh(now){updateSpellToggle(now);if(spellMode){drawSpellSuite(now);if(debug)drawDebug(now);return}');\n    const allStyles=\"const SPELL_STYLES=[{id:'eldritch',short:'ELD',label:'ELDRITCH',hue:28,hue2:48},{id:'arcane',short:'ARC',label:'ARCANE',hue:188,hue2:220},{id:'void',short:'VOID',label:'VOID',hue:278,hue2:325}];\";\n    const orangeOnly=\"const SPELL_STYLES=[{id:'eldritch',short:'ON',label:'ORANGE',hue:28,hue2:42}];\";\n    t=t.replace(allStyles,orangeOnly);\n    t=t.replace(\"spellBtn.textContent='SPELL '+s.short;\",\"spellBtn.textContent=spellMode?'SPELL ON':'SPELL OFF';spellBtn.style.pointerEvents='none';\");\n    t=t.replace(\"ctx.strokeStyle=spellColor(28+k*2,100,70,.34+.32*Math.sin(now*.004+k));\",\"ctx.strokeStyle=spellColor(28+k*1.15,100,64,.42+.36*Math.sin(now*.004+k));\");\n    t=t.replace(\"ctx.shadowColor=spellColor(base,100,62,1);\",\"ctx.shadowColor='rgba(255,122,24,1)';\");\n    t=t.replace(\"ctx.strokeStyle=spellColor(base,100,68,.92);\",\"ctx.strokeStyle='rgba(255,122,24,.96)';\");\n    t=t.replace(\"ctx.strokeStyle='rgba(255,255,255,.92)';\",\"ctx.strokeStyle='rgba(255,244,214,.98)';\");\n    if(!t.includes('if(debug)drawDebug(now)}')) throw new Error('V7.2 draw tail tidak ditemukan.');\n  ";
+
+  if(!src.includes(brokenV7)) throw new Error('V7 draw patch source tidak ditemukan.');
+  src=src.replace(brokenV7,fixedV7);
+  src=src.replaceAll('HAND//FX V7.0 Loader','HAND//FX V7.2 Loader')
+         .replaceAll('<h2>HAND//FX V7.0</h2>','<h2>HAND//FX V7.2</h2>')
+         .replaceAll('Loading spell shields & dual casting…','Loading double-clap spell-only mode…')
+         .replaceAll('V7.0 gagal boot','V7.2 gagal boot');
+
+  document.open();document.write(src);document.close();
+}catch(e){
+  console.error(e);
+  document.body.innerHTML='<div class="boot"><div class="box"><h2>V7.2 gagal boot</h2><p>'+String(e.message||e)+'</p><small>Refresh halaman HTTPS ini.</small></div></div>';
+}
+})();
+</script>
+</body>
+</html>
