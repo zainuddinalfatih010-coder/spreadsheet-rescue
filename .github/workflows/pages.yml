@@ -1,4 +1,4 @@
-name: Deploy Spreadsheet Rescue to GitHub Pages
+name: Diagnose PROJECT-3-TIK source
 
 on:
   push:
@@ -6,110 +6,27 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
+  contents: read
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  diagnose:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Materialize and verify PROJECT-3-TIK
+      - uses: actions/checkout@v4
+      - name: Inspect source build
         shell: bash
         run: |
           set -euo pipefail
-          file='PROJECT-3-TIK/index.html'
           src='https://project-3-tik-gptacece2-4164s-projects.vercel.app/'
-          mkdir -p PROJECT-3-TIK
-
-          valid_local=false
-          if [ -f "$file" ]; then
-            bytes=$(wc -c < "$file")
-            if [ "$bytes" -gt 400000 ] && grep -Fq '__V12_HEALTH' "$file" && grep -Fq '<canvas' "$file"; then
-              valid_local=true
-            fi
-          fi
-
-          if [ "$valid_local" != true ]; then
-            echo 'Repository copy is incomplete; materializing the verified full build once.'
-            curl -fL --retry 5 --retry-all-errors --connect-timeout 15 --max-time 120 "$src" -o "$file"
-          else
-            echo 'Repository already contains the full self-hosted game.'
-          fi
-
-          bytes=$(wc -c < "$file")
-          echo "Verified HTML bytes: $bytes"
-          test "$bytes" -gt 400000
-          grep -Fq '<canvas' "$file"
-          grep -Fq '__V12_HEALTH' "$file"
-          grep -Fq 'p12ReinforceNewSegment' "$file"
-          grep -Fq 'Cross-Out' "$file"
-          if grep -Eqi 'vercel.*authentication|log in to vercel|sign in to vercel' "$file"; then
-            echo 'Vercel authentication page detected, refusing to publish.' >&2
-            exit 1
-          fi
-
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('PROJECT-3-TIK/index.html')
-          s=p.read_text()
-          import re
-          s=re.sub(r'<title>.*?</title>', '<title>PROJECT-3-TIK</title>', s, count=1, flags=re.S)
-          s=re.sub(r'<meta name="description" content="[^"]*"\s*/?>', '<meta name="description" content="PROJECT-3-TIK — interactive browser game project" />', s, count=1)
-          p.write_text(s)
-          PY
-          rm -f PROJECT-3-TIK/game.gz.b64
-
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add PROJECT-3-TIK/index.html PROJECT-3-TIK/game.gz.b64 || true
-          if ! git diff --cached --quiet; then
-            git commit -m 'Store full self-hosted PROJECT-3-TIK build'
-            git push origin HEAD:main
-          fi
-
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload static site
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-
-      - name: Deploy to Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-      - name: Public HTTP smoke test
-        shell: bash
-        run: |
-          set -euo pipefail
-          url='${{ steps.deployment.outputs.page_url }}PROJECT-3-TIK/'
-          echo "Smoke testing: $url"
-          sleep 5
-          curl -fL --retry 10 --retry-all-errors --retry-delay 2 --connect-timeout 15 --max-time 120 "$url" -o /tmp/project3-live.html
-          bytes=$(wc -c < /tmp/project3-live.html)
-          echo "Live bytes: $bytes"
-          test "$bytes" -gt 400000
-          grep -Fq '<canvas' /tmp/project3-live.html
-          grep -Fq '__V12_HEALTH' /tmp/project3-live.html
-          grep -Fq 'p12ReinforceNewSegment' /tmp/project3-live.html
-          if grep -Fq 'game.gz.b64' /tmp/project3-live.html; then
-            echo 'Old fetch loader is still live.' >&2
-            exit 1
-          fi
-          if grep -Eqi 'vercel.*authentication|log in to vercel|sign in to vercel' /tmp/project3-live.html; then
-            echo 'Auth/interstitial page is live instead of the game.' >&2
-            exit 1
-          fi
-          echo 'PROJECT-3-TIK PUBLIC_HTTP_SMOKE_PASS'
+          curl -fL --retry 5 --retry-all-errors --connect-timeout 15 --max-time 120 "$src" -o /tmp/source.html
+          echo "BYTES=$(wc -c < /tmp/source.html)"
+          echo '--- TITLE ---'
+          grep -oE '<title>[^<]*</title>' /tmp/source.html | head -5 || true
+          echo '--- VERSION TOKENS ---'
+          grep -aoE 'v1\.[0-9][A-Za-z0-9._=-]{0,80}' /tmp/source.html | sort -u | tail -50 || true
+          echo '--- HEALTH TOKENS ---'
+          grep -aoE '__[A-Z0-9_]+HEALTH' /tmp/source.html | sort -u | tail -50 || true
+          echo '--- MARKERS ---'
+          for m in '<canvas' '__V12_HEALTH' 'p12ReinforceNewSegment' 'Cross-Out' 'v1.2-mega-2026-08-16' '__V11RC1_HEALTH' 'P10.1' 'P9.3'; do
+            if grep -Fq "$m" /tmp/source.html; then echo "YES $m"; else echo "NO  $m"; fi
+          done
